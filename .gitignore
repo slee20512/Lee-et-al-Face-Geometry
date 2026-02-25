@@ -1,0 +1,23 @@
+# Checkpoints
+*.pth
+*.pth.tar
+*.pt
+
+# Data
+*.npz
+*.npy
+*.h5
+*.mat
+
+# Logs
+logs/
+checkpoints/
+outputs/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Large assets
+*.zip
+*.glb
+*.gltf
