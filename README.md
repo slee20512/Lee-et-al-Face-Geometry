@@ -19,14 +19,11 @@ This document provides a high-level overview of the combined codebase supporting
 
 ## Data & Stimuli (Google Drive)
 
-**[Google Drive — Models, Data & Stimuli](https://drive.google.com/drive/folders/1FgQFqIWUn6qi4sW2iZhHRol0H-tS6EmI?usp=sharing)**
+**[Google Drive — Test data](https://drive.google.com/drive/folders/1q7dE_6lsilOLArYqUZSwXE-q10ZyxdCu?usp=sharing)**
 
 This Drive contains:
 - `test_img/` — Canonical testing images for each model task
 - `human_behav_test_img/` — All stimuli used in behavioral testing
-
-Additional model checkpoints and data (used in `proj-face`):
-**[Google Drive — proj-face data & saved models](https://drive.google.com/drive/folders/1_xLVSTu8r6WDh5yp5LYIVN67J_vRYmZV?usp=drive_link)**
 
 ---
 
