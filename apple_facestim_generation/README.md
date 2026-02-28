@@ -1,5 +1,9 @@
 # apple_facestim_generation
-Generate face stimuli using Apple ARKit 
+
+> Original codebase created by [You-Nah Jeon](https://github.com/younahjeon/apple_facestim_generation).  
+> This repository contains extensions and modifications developed for the Lee et al. Face Geometry project.
+
+Generate face stimuli using Apple ARKit.
 
 This project is composed of 5 steps: 
 1.  Get a 3D face mesh with vertices, triangular face indices, and blendshapes using the IPhone X's True-Depth camera and Apple ARKit. 
