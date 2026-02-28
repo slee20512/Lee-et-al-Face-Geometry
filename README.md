@@ -1,6 +1,21 @@
 # Lee-et-al-Face-Geometry
 
-This document provides a high-level overview of the combined codebase supporting the Lee et al. face project. The repository is organized into two main sub-projects: **`proj-face`** (model training, testing, and analysis) and **`apple_facestim_generation`** (stimulus generation from face capture). Pre-trained models, data, and rendered stimuli are available via Google Drive (see links below).
+## Associated Manuscript
+
+This repository accompanies the following preprint:
+
+**Efficient task generalization and humanlike face perception in models that learn to discriminate face geometry**  
+Seojin Lee, Josh Ying, Ahana Dey, You-Nah Jeon, Elias B. Issa  
+
+bioRxiv (2026)  
+DOI: https://doi.org/10.64898/2026.01.31.703048  
+
+Preprint available at:  
+https://www.biorxiv.org/content/10.64898/2026.01.31.703048v1
+
+New results and updates will follow this preprint.
+
+The repository is organized into two main sub-projects: **`proj-face`** (model training, testing, and analysis) and **`apple_facestim_generation`** (stimulus generation from face capture). Pre-trained models, data, and rendered stimuli are available via Google Drive (see links below).
 
 ---
 
