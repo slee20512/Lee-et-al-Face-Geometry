@@ -59,7 +59,7 @@ def load_model(model_name):
         # Load the weights
         model.load_state_dict(new_state_dict, strict=True)
 
-    elif model_name == 'vggface_seojin':
+    elif model_name == 'vggface_AppleMesh02':
         # Instantiate Model
         model = InceptionResNet(num_classes=512).cuda()
 
@@ -68,7 +68,7 @@ def load_model(model_name):
         model.load_state_dict(ckpt, strict=False)
 
        
-    elif model_name == 'vggface_seojin2':
+    elif model_name == 'vggface_AppleMesh022':
         # Load .t7 model
         t7_path = "/mnt/smb/locker/issa-locker/users/Seojin/saved_models/vgg_face_torch/VGG_FACE.t7"
         checkpoint = torchfile.load(t7_path)
@@ -265,8 +265,8 @@ def load_model(model_name):
     
 <<<<<<< HEAD
 =======
-    elif model_name == 'vbsl50k_colorbg_elias_neptune_contrastive_self_emotion_best_model':
-        checkpoint_path = 'vbsl50k_colorbg_elias_neptune_contrastive_self_emotion_best_model.pth'
+    elif model_name == 'vbsl50k_colorbg_AppleMesh00_AppleMesh01_contrastive_self_emotion_best_model':
+        checkpoint_path = 'vbsl50k_colorbg_AppleMesh00_AppleMesh01_contrastive_self_emotion_best_model.pth'
         checkpoint = torch.load(checkpoint_path, map_location='cuda')
 
         # 🔹 Load a standard ResNet-50 model
@@ -289,8 +289,8 @@ def load_model(model_name):
         model = nn.DataParallel(model).cuda()
         model.eval()  # Set model to evaluation mode
 
-    elif model_name == 'barlowtwins_class_contrastive_vbsle50k_elias_neptune_contrastive_best_model':
-        checkpoint_path = 'barlowtwins_class_contrastive_vbsle50k_elias_neptune_contrastive_best_model.pth'
+    elif model_name == 'barlowtwins_class_contrastive_vbsle50k_AppleMesh00_AppleMesh01_contrastive_best_model':
+        checkpoint_path = 'barlowtwins_class_contrastive_vbsle50k_AppleMesh00_AppleMesh01_contrastive_best_model.pth'
         checkpoint = torch.load(checkpoint_path, map_location='cuda')
 
         # 🔹 Load a standard ResNet-50 model
@@ -341,8 +341,8 @@ def load_model(model_name):
         model.eval()  # Set to evaluation mode
 
 
-    elif model_name == 'vbsl50k_colorbg_elias_neptune_no2dtransform_initial_backbone':
-        checkpoint_path = 'vbsl50k_colorbg_elias_neptune_no2dtransform_initial_backbone.pth'
+    elif model_name == 'vbsl50k_colorbg_AppleMesh00_AppleMesh01_no2dtransform_initial_backbone':
+        checkpoint_path = 'vbsl50k_colorbg_AppleMesh00_AppleMesh01_no2dtransform_initial_backbone.pth'
         checkpoint = torch.load(checkpoint_path, map_location='cuda')
         # Load pre-trained ResNet-50 backbone from Barlow Twins repository
         model = torch.hub.load('facebookresearch/barlowtwins:main', 'resnet50')
@@ -412,9 +412,9 @@ def load_model(model_name):
         else :
             model.fc = nn.Linear(2048, 2)
         model = nn.DataParallel(model).cuda()
-        if model_name == 'off_the_shelf_barlowtwins_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL': # elias-dan
-            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL.pth.tar')
-            print("loaded off_the_shelf_barlowtwins_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL")
+        if model_name == 'off_the_shelf_barlowtwins_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL': # AppleMesh00-AppleMesh04
+            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL.pth.tar')
+            print("loaded off_the_shelf_barlowtwins_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL")
 
         elif model_name == 'off_the_shelf_barlowtwins_finetune_12way_6ID_2EM_IDEM_colorbg': # retrained 0927
             checkpoint = torch.load('barlowtwins_finetune_6ID_2EM_IDEM_colorbg_seed77_model_best.pth.tar')
@@ -436,32 +436,32 @@ def load_model(model_name):
             checkpoint = torch.load('barlowtwins_finetune_texture_colorbg_em_4way_NHAS_seed77_model_best.pth.tar')
             print("loaded off_the_shelf_barlowtwins_finetune_texture_colorbg_em_4way_NHAS")
 
-        elif model_name == 'off_the_shelf_barlowtwins_seojin_dan_epochs50':
-            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_seojin_dan_seed777_model_best.pth.tar')
-            print(f"loaded barlowtwins_finetune_vbsle_50k_seojin_dan_seed777_model_best_SL.pth.tar") 
+        elif model_name == 'off_the_shelf_barlowtwins_AppleMesh02_AppleMesh04_epochs50':
+            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+            print(f"loaded barlowtwins_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best_SL.pth.tar") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_texture_colorbg_2way_seojin_dan':
-            checkpoint = torch.load('barlowtwins_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_texture_colorbg_2way_seojin_dan") 
+        elif model_name == 'off_the_shelf_barlowtwins_texture_colorbg_2way_AppleMesh02_AppleMesh04':
+            checkpoint = torch.load('barlowtwins_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_texture_colorbg_2way_AppleMesh02_AppleMesh04") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_texture_colorbg_2way_sophie_seojin':
-            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_sophie_seojin_colorbg_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_texture_colorbg_2way_sophie_seojin") 
+        elif model_name == 'off_the_shelf_barlowtwins_texture_colorbg_2way_AppleMesh03_AppleMesh02':
+            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_AppleMesh03_AppleMesh02_colorbg_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_texture_colorbg_2way_AppleMesh03_AppleMesh02") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_texture_colorbg_2way_sophie_kedar':
-            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_sophie_kedar_colorbg_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_texture_colorbg_2way_sophie_kedar") 
+        elif model_name == 'off_the_shelf_barlowtwins_texture_colorbg_2way_AppleMesh03_AppleMesh08':
+            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_AppleMesh03_AppleMesh08_colorbg_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_texture_colorbg_2way_AppleMesh03_AppleMesh08") 
 
         elif model_name == 'off_the_shelf_barlowtwins_texture_colorbg_4way':
             checkpoint = torch.load('barlowtwins_finetune_texture_colorbg_4way_seed77_model_best.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_texture_colorbg_4way") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_2way_sophie_kedar':
-            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_sophie_kedar_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_2way_sophie_kedar") 
-        elif model_name == 'off_the_shelf_barlowtwins_2way_seojin_sophie':
-            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_seojin_sophie_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_2way_seojin_sophie") 
+        elif model_name == 'off_the_shelf_barlowtwins_2way_AppleMesh03_AppleMesh08':
+            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_AppleMesh03_AppleMesh08_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_2way_AppleMesh03_AppleMesh08") 
+        elif model_name == 'off_the_shelf_barlowtwins_2way_AppleMesh02_AppleMesh03':
+            checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_AppleMesh02_AppleMesh03_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_2way_AppleMesh02_AppleMesh03") 
 
         elif model_name == 'off_the_shelf_barlowtwins_ID_8way' :
             checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_8way_far_seed77_model_best.pth.tar')
@@ -518,29 +518,29 @@ def load_model(model_name):
             checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_12way_seed77_model_best_12way.pth.tar')
             print(f"loaded barlowtwins_finetune_vbsle_50k_12way_seed77_model_best_12way.pth.tar") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_EM_seojin_sophie_seed777_model_best.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_colorbg' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_colorbg") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_epochs10' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs10.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs10.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_epochs10") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_epochs50' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs50.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_epochs50") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_colorbg_epochs50' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_epochs50.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_epochs50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_epochs50") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_graybg_epochs50' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled_epochs50.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled_epochs50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_graybg_epochs50") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_14way_IDEM_seojin_dan_colorbg_seed777_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_seojin_dan_colorbg_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_14way_IDEM_seojin_dan_colorbg_seed777_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_14way_IDEM_sophie_kedar_colorbg_seed777_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_sophie_kedar_colorbg_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_14way_IDEM_sophie_kedar_colorbg_seed777_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_14way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed777_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_14way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed777_model_best") 
 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_28way_epochs50' :
             checkpoint = torch.load('barlowtwins_finetune_28way_IDEM_seed777_model_best_epoch50.pth.tar')
@@ -555,55 +555,55 @@ def load_model(model_name):
             checkpoint = torch.load('barlowtwins_finetune_28way_IDEM_colorbg_seed777_model_best_grayscaled_epoch50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_28way_graybg_epochs50") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_4way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_4way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_4way_IDEM_seojin_dan_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_4way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_4way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_4way_IDEM_sophie_kedar_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_4way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_4way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_4way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_4way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_4way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_4way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_6way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_6way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_6way_IDEM_seojin_dan_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_6way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_6way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_6way_IDEM_sophie_kedar_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_6way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_6way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_6way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_6way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_6way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_6way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_8way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_8way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_8way_IDEM_seojin_dan_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_8way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_8way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_8way_IDEM_sophie_kedar_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('off_the_shelfbarlowtwins_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best_epochs50.pth.tar')
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_8way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_8way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_8way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_8way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_8way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_8way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('off_the_shelfbarlowtwins_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_epochs50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_8way_colorbg_epochs50") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_10way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_10way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_10way_IDEM_seojin_dan_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_10way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_10way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_10way_IDEM_sophie_kedar_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_10way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_10way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_10way_IDEM_seojin_sophie_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_10way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_10way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_10way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_10way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_10way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_10way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_10way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_10way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_10way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_12way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_12way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_12way_IDEM_seojin_dan_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_12way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_12way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_12way_IDEM_sophie_kedar_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_12way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_12way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_12way_IDEM_seojin_sophie_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_12way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_12way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_12way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_12way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_12way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_12way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_12way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_12way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_12way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best") 
 
         elif model_name == 'off_the_shelf_barlowtwins_finetune_8way_IDEM_ssskd_colorbg' :
             checkpoint = torch.load('barlowtwins_finetune_8way_IDEM_ssskd_colorbg_seed77_model_best.pth.tar')
@@ -624,18 +624,18 @@ def load_model(model_name):
             checkpoint = torch.load('barlowtwins_finetune_42way_IDEM_colorbg_seed777_model_best.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_finetune_42way_IDEM_colorbg_seed777_model_best") 
 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_seojin_seed77_texture_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_7way_EM_seojin_seed77__texture_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_seojin_seed77_texture_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_7way_EM_sophie_colorbg_seed77__model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_sophie_colorbg_seed77_model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_dan_colorbg_seed77__model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_7way_EM_dan_colorbg_seed77__model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_dan_colorbg_seed77__model_best") 
-        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_kedar_colorbg_seed77__model_best' :
-            checkpoint = torch.load('barlowtwins_finetune_7way_EM_kedar_colorbg_seed77__model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_kedar_colorbg_seed77__model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh02_seed77_texture_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_7way_EM_AppleMesh02_seed77__texture_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh02_seed77_texture_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_7way_EM_AppleMesh03_colorbg_seed77__model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh03_colorbg_seed77_model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh04_colorbg_seed77__model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_7way_EM_AppleMesh04_colorbg_seed77__model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh04_colorbg_seed77__model_best") 
+        elif model_name == 'off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh08_colorbg_seed77__model_best' :
+            checkpoint = torch.load('barlowtwins_finetune_7way_EM_AppleMesh08_colorbg_seed77__model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_finetune_7way_EM_AppleMesh08_colorbg_seed77__model_best") 
 
         elif model_name == 'off_the_shelf_barlowtwins_finetune_vbsle_50k_4way_SSKD_seed77_model_best' :
             checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_4way_SSKD_seed77_model_best.pth.tar')
@@ -653,8 +653,8 @@ def load_model(model_name):
         print(f"Model loaded successfully: {model_name}")
 
    
-    elif model_name == '14way_EM_seojin_sophie_barlowtwins_pretrained2_final_model':
-        checkpoint_path = '/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/14way_EM_seojin_sophie_barlowtwins_pretrained3_final_model_proj.pth.tar'
+    elif model_name == '14way_EM_AppleMesh02_AppleMesh03_barlowtwins_pretrained2_final_model':
+        checkpoint_path = '/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/14way_EM_AppleMesh02_AppleMesh03_barlowtwins_pretrained3_final_model_proj.pth.tar'
         checkpoint = torch.load(checkpoint_path, map_location='cuda')
         state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint  # Adjust based on your checkpoint structure
         model = BarlowTwins(args)
@@ -676,8 +676,8 @@ def load_model(model_name):
         model = model.cuda()
         model.eval()  # Set model to evaluation mode 
     
-    elif model_name == 'SL_imagenet_pretrained_elias_neptune_bt':
-        checkpoint_path = '/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/elias_neptune_50k_best_model.pth.tar'
+    elif model_name == 'SL_imagenet_pretrained_AppleMesh00_AppleMesh01_bt':
+        checkpoint_path = '/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/AppleMesh00_AppleMesh01_50k_best_model.pth.tar'
         checkpoint = torch.load(checkpoint_path, map_location='cuda')
         state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint  # Adjust based on your checkpoint structure
         model = BarlowTwins(args)
@@ -692,8 +692,8 @@ def load_model(model_name):
         
 
         # Load the specific Barlow Twins model
-        if model_name == 'SL_barlowtwins_pretrained_elias_neptune_bt':
-            checkpoint_path = '/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/elias_neptune_50k_barlowtwins_pretrained_best_model.pth'
+        if model_name == 'SL_barlowtwins_pretrained_AppleMesh00_AppleMesh01_bt':
+            checkpoint_path = '/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/AppleMesh00_AppleMesh01_50k_barlowtwins_pretrained_best_model.pth'
             print(f"Loading model from: {checkpoint_path}")
             state_dict = torch.load(checkpoint_path)
 
@@ -702,18 +702,18 @@ def load_model(model_name):
             model.module.load_state_dict(state_dict, strict=False)
 
 
-        elif model_name == '14way_EM_seojin_sophie_barlowtwins_pretrained_final_model':
+        elif model_name == '14way_EM_AppleMesh02_AppleMesh03_barlowtwins_pretrained_final_model':
             model.fc = nn.Linear(2048, 14)  # Set fc as Identity to match Barlow Twins architecture
             # model = nn.DataParallel(model).cuda()
-            checkpoint = torch.load('/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/14way_EM_seojin_sophie_barlowtwins_pretrained_final_model.pth.tar')
+            checkpoint = torch.load('/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/14way_EM_AppleMesh02_AppleMesh03_barlowtwins_pretrained_final_model.pth.tar')
             print(checkpoint.keys())
             model.load_state_dict(checkpoint, strict=False)
             model = nn.DataParallel(model).cuda()
 
-        elif model_name == '14way_EM_seojin_sophie_barlowtwins_pretrained_best_model':
+        elif model_name == '14way_EM_AppleMesh02_AppleMesh03_barlowtwins_pretrained_best_model':
             model.fc = nn.Linear(2048, 14)  # Set fc as Identity to match Barlow Twins architecture
             model = nn.DataParallel(model).cuda()
-            checkpoint = torch.load('/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/14way_EM_seojin_sophie_barlowtwins_pretrained_best_model.pth.tar')
+            checkpoint = torch.load('/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models/14way_EM_AppleMesh02_AppleMesh03_barlowtwins_pretrained_best_model.pth.tar')
             print(checkpoint.keys())
             model.load_state_dict(checkpoint, strict=False)
         
@@ -787,44 +787,44 @@ def load_model(model_name):
             num_ids = 14
         model = MultiHeadResNet(num_classes1=7, num_classes2=7)
         model = nn.DataParallel(model).cuda()
-        if model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2")
+        if model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2")
         
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_epoch2' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_epoch2.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_epoch2")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_epoch2' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_epoch2.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_epoch2")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_epoch2' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_epoch2.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_epoch2")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_epoch10' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_epoch10.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_epoch10")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_epoch10' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_epoch10.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_epoch10")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_epoch10' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_epoch10.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_epoch10")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_epoch2' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_epoch2.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_epoch2")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_epoch2' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_epoch2.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_epoch2")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_epoch2' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_epoch2.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_epoch2")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_epoch10' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_epoch10.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_epoch10")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_epoch10' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_epoch10.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_epoch10")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_epoch10' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_epoch10.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_epoch10")
 
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_alternate' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_alternate.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head1_alternate")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_alternate' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_alternate.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_head2_alternate")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_alternate' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_alternate.pth')
-            print("loaded resnet50_finetune_14way_EM_seojin_sophie_seed77_best_heads_combined_epoch10")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_alternate' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_alternate.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head1_alternate")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_alternate' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_alternate.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_head2_alternate")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_alternate' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_alternate.pth')
+            print("loaded resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_best_heads_combined_epoch10")
 
         
         new_state_dict = {}
@@ -864,17 +864,17 @@ def load_model(model_name):
 
         # Mapping model names to class indices
         class_idx_map = {
-            'SL_resnet50_finetune_ova_seojin_anger': 0,
-            'SL_resnet50_finetune_ova_seojin_disgust': 1,
-            'SL_resnet50_finetune_ova_seojin_fear': 2,
-            'SL_resnet50_finetune_ova_seojin_happiness': 3,
-            'SL_resnet50_finetune_ova_seojin_neutral': 4,
-            'SL_resnet50_finetune_ova_seojin_sadness': 5,
-            'SL_resnet50_finetune_ova_seojin_surprise': 6
+            'SL_resnet50_finetune_ova_AppleMesh02_anger': 0,
+            'SL_resnet50_finetune_ova_AppleMesh02_disgust': 1,
+            'SL_resnet50_finetune_ova_AppleMesh02_fear': 2,
+            'SL_resnet50_finetune_ova_AppleMesh02_happiness': 3,
+            'SL_resnet50_finetune_ova_AppleMesh02_neutral': 4,
+            'SL_resnet50_finetune_ova_AppleMesh02_sadness': 5,
+            'SL_resnet50_finetune_ova_AppleMesh02_surprise': 6
         }
 
         if model_name in class_idx_map:
-            checkpoint_path = f"resnet50_finetune_ova_seojin_{model_name.split('_')[-1]}.pth"
+            checkpoint_path = f"resnet50_finetune_ova_AppleMesh02_{model_name.split('_')[-1]}.pth"
             checkpoint = torch.load(checkpoint_path)
             model.module.set_class_idx(class_idx_map[model_name])  # ✅ Set class_idx in the model
             print(f"Loaded {model_name}, assigned class_idx: {model.module.class_idx}")
@@ -890,13 +890,13 @@ def load_model(model_name):
 
         model.eval()
 
-    elif model_name == 'SL_basel_colortexture_1kid_finetune_vbsle_50k_seojin_dan_seed777_model_best' :
+    elif model_name == 'SL_basel_colortexture_1kid_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best' :
         model = models.resnet50(pretrained=False)
         model.fc = nn.Linear(2048, 1000)
         model = nn.DataParallel(model).cuda()
         # load model (2way emotion)
-        checkpoint = torch.load('basel_colortexture_1kid_finetune_vbsle_50k_seojin_dan_seed777_model_best.pth.tar')
-        print(f"loaded SL_basel_colortexture_1kid_finetune_vbsle_50k_seojin_dan_seed777_model_best") 
+        checkpoint = torch.load('basel_colortexture_1kid_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+        print(f"loaded SL_basel_colortexture_1kid_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best") 
         model.load_state_dict(checkpoint['state_dict'])
         # roll back from DataParallel`
         model = model.module
@@ -945,24 +945,24 @@ def load_model(model_name):
         model.fc = nn.Linear(2048, num_ids)
         model = nn.DataParallel(model).cuda()
         # load model (2way emotion)
-        if model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_neutral_happiness_seed777_model_best_SL' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_neutral_happiness_seed777_model_best_SL.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_seojin_neutral_happiness_seed777_model_best_SL") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_neutral_sadness_seed777_model_best_SL' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_neutral_sadness_seed777_model_best_SL.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_seojin_neutral_sadness_seed777_model_best_SL") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_neutral_disgust_seed777_model_best_SL' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_neutral_disgust_seed777_model_best_SL.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_seojin_neutral_disgust_seed777_model_best_SL") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_neutral_anger_seed777_model_best_SL' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_neutral_anger_seed777_model_best_SL.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_seojin_neutral_anger_seed777_model_best_SL") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_happiness_sadness_seed777_model_best_SL' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_happiness_sadness_seed777_model_best_SL.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_seojin_happiness_sadness_seed777_model_best_SL") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_fear_anger_seed777_model_best_SL' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_fear_anger_seed777_model_best_SL.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_seojin_fear_anger_seed777_model_best_SL") 
+        if model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_happiness_seed777_model_best_SL' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_neutral_happiness_seed777_model_best_SL.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_happiness_seed777_model_best_SL") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_sadness_seed777_model_best_SL' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_neutral_sadness_seed777_model_best_SL.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_sadness_seed777_model_best_SL") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_disgust_seed777_model_best_SL' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_neutral_disgust_seed777_model_best_SL.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_disgust_seed777_model_best_SL") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_anger_seed777_model_best_SL' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_neutral_anger_seed777_model_best_SL.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_neutral_anger_seed777_model_best_SL") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_happiness_sadness_seed777_model_best_SL' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_happiness_sadness_seed777_model_best_SL.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_happiness_sadness_seed777_model_best_SL") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_fear_anger_seed777_model_best_SL' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_fear_anger_seed777_model_best_SL.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_fear_anger_seed777_model_best_SL") 
         # load model (4way emotion)
         elif model_name == 'SL_resnet50_finetune_vbsle_50k_em_4way_NFDS_seed77_model_best' :
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_em_4way_NFDS_seed77_model_best.pth.tar')
@@ -991,12 +991,12 @@ def load_model(model_name):
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_neutral_surprise_seed777_model_best_SL.pth.tar')
             print("loaded resnet50_finetune_vbsle_50k_neutral_surprise_seed_777_model_best_SL")
 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_sophie_emotion_mix_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_sophie_emotion_mix_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_sophie_emotion_mix_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_sophie_emotion_full_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_sophie_emotion_full_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_sophie_emotion_full_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_emotion_mix_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_emotion_mix_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_emotion_mix_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_emotion_full_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_emotion_full_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_emotion_full_seed777_model_best_SL")
 
         elif model_name == 'SL_resnet50_finetune_12way_6ID_2EM_IDEM_colorbg': # retrained 0927
             checkpoint = torch.load('resnet50_finetune_6ID_2EM_IDEM_colorbg_seed777__best.pth.tar')
@@ -1026,39 +1026,39 @@ def load_model(model_name):
 
     
 
-        elif model_name == 'SL_resnet50_finetune_7way_EM_seojin_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_7way_EM_seojin_seed77__no_texture_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_7way_EM_seojin_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_7way_EM_AppleMesh02_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_7way_EM_AppleMesh02_seed77__no_texture_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_7way_EM_AppleMesh02_seed77_model_best")
         
-        elif model_name == 'SL_resnet50_finetune_7way_EM_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_7way_EM_sophie_colorbg_seed77__model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_7way_EM_sophie_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_7way_EM_dan_colorbg_seed77__model_best' :
-            checkpoint = torch.load('resnet50_finetune_7way_EM_dan_colorbg_seed77__model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_7way_EM_dan_colorbg_seed77__model_best")
-        elif model_name == 'SL_resnet50_finetune_7way_EM_kedar_colorbg_seed77__model_best' :
-            checkpoint = torch.load('resnet50_finetune_7way_EM_kedar_colorbg_seed77__model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_7way_EM_kedar_colorbg_seed77__model_best")
+        elif model_name == 'SL_resnet50_finetune_7way_EM_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_7way_EM_AppleMesh03_colorbg_seed77__model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_7way_EM_AppleMesh03_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_7way_EM_AppleMesh04_colorbg_seed77__model_best' :
+            checkpoint = torch.load('resnet50_finetune_7way_EM_AppleMesh04_colorbg_seed77__model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_7way_EM_AppleMesh04_colorbg_seed77__model_best")
+        elif model_name == 'SL_resnet50_finetune_7way_EM_AppleMesh08_colorbg_seed77__model_best' :
+            checkpoint = torch.load('resnet50_finetune_7way_EM_AppleMesh08_colorbg_seed77__model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_7way_EM_AppleMesh08_colorbg_seed77__model_best")
 
-        elif model_name == 'SL_colorbg_resnet50_finetune_7way_EM_seojin_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_7way_EM_seojin_seed77_model_best.pth.tar')
-            print("loaded SL_colorbg_resnet50_finetune_7way_EM_seojin_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_EM_seojin_sophie_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs10' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs10.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs10")
-        elif model_name == 'SL_resnet50_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs50' :
-            checkpoint = torch.load('resnet50_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs50.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs50")
+        elif model_name == 'SL_colorbg_resnet50_finetune_7way_EM_AppleMesh02_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_7way_EM_AppleMesh02_seed77_model_best.pth.tar')
+            print("loaded SL_colorbg_resnet50_finetune_7way_EM_AppleMesh02_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs10' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs10.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs10")
+        elif model_name == 'SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs50' :
+            checkpoint = torch.load('resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs50.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs50")
 
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_dan_colorbg_seed777_model_best' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_dan_colorbg_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_dan_colorbg_seed777_model_best")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_sophie_kedar_colorbg_seed777_model_best' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_sophie_kedar_colorbg_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_sophie_kedar_colorbg_seed777_model_best")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed777_model_best' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed777_model_best")
 
         elif model_name == 'SL_resnet50_finetune_texture_colorbg_em_neutral_anger_seed777_model_best' :
             checkpoint = torch.load('resnet50_finetune_texture_colorbg_em_neutral_anger_seed777_model_best.pth.tar')
@@ -1130,144 +1130,144 @@ def load_model(model_name):
             checkpoint = torch.load('resnet50_finetune_texture_colorbg_em_6way_excl_fear_seed77_model_best_blurred_epochs20_ver3.pth.tar')
             print("loaded SL_resnet50_finetune_texture_colorbg_em_6way_excl_fear_seed77_model_best_blurred_epochs20_ver3")
 
-        elif model_name == 'SL_resnet50_finetune_4way_IDEM_seojin_sophie_NA_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_4way_IDEM_seojin_sophie_NA_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_4way_IDEM_seojin_sophie_NA_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_4way_IDEM_seojin_sophie_HA_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_4way_IDEM_seojin_sophie_HA_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_4way_IDEM_seojin_sophie_HA_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_6way_IDEM_seojin_sophie_HAS_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_6way_IDEM_seojin_sophie_HAS_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_6way_IDEM_seojin_sophie_HAS_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_8way_IDEM_seojin_sophie_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_8way_IDEM_seojin_sophie_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_8way_IDEM_seojin_sophie_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_10way_IDEM_seojin_sophie_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_10way_IDEM_seojin_sophie_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_10way_IDEM_seojin_sophie_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_12way_IDEM_seojin_sophie_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_12way_IDEM_seojin_sophie_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_12way_IDEM_seojin_sophie_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_NA_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_NA_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_NA_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_HA_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_HA_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_HA_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_HAS_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_HAS_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_HAS_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh03_seed77_model_best")
         
-        elif model_name == 'SL_resnet50_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled.pth.tar')
+        elif model_name == 'SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled.pth.tar')
 
-        elif model_name == 'SL_resnet50_finetune_4way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_4way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_4way_IDEM_seojin_dan_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_4way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_4way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_4way_IDEM_sophie_kedar_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_4way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_4way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_4way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best")
 
-            print("loaded SL_resnet50_finetune_4way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled")
-        elif model_name == 'SL_resnet50_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
+            print("loaded SL_resnet50_finetune_4way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled")
+        elif model_name == 'SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
 
-            checkpoint = torch.load('resnet50_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled.pth.tar')
-            print("loaded SL_resnet50_finetune_6way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled")
+            checkpoint = torch.load('resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled.pth.tar')
+            print("loaded SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled")
 
-        elif model_name == 'SL_resnet50_finetune_6way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_6way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_6way_IDEM_seojin_dan_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_6way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_6way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_6way_IDEM_sophie_kedar_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_6way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_6way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_6way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_6way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best")
 
-        elif model_name == 'SL_resnet50_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled.pth.tar')
-            print("loaded SL_resnet50_finetune_8way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled")
+        elif model_name == 'SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled.pth.tar')
+            print("loaded SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled")
 
-        elif model_name == 'SL_resnet50_finetune_8way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_8way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_8way_IDEM_seojin_dan_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_8way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_8way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_8way_IDEM_sophie_kedar_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_8way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_8way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_8way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_8way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best")
 
-        elif model_name == 'SL_resnet50_finetune_10way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_10way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_10way_IDEM_seojin_dan_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_10way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_10way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-        elif model_name == 'SL_resnet50_finetune_10way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_10way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_10way_IDEM_seojin_sophie_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_12way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_12way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_12way_IDEM_seojin_sophie_colorbg_seed77_model_best")
-            print("loaded SL_resnet50_finetune_10way_IDEM_sophie_kedar_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_12way_IDEM_seojin_dan_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_12way_IDEM_seojin_dan_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_12way_IDEM_seojin_dan_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_12way_IDEM_sophie_kedar_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_12way_IDEM_sophie_kedar_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_12way_IDEM_sophie_kedar_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_10way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_10way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+        elif model_name == 'SL_resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_10way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best")
+            print("loaded SL_resnet50_finetune_10way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_12way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_12way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_12way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_12way_IDEM_AppleMesh03_AppleMesh08_colorbg_seed77_model_best")
 
 
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_epoch4' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_epoch4.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_epoch4")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled_epoch4' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled_epoch4.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled_epoch4")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best_grayscaled")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_20250303' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_20250303.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_20250303")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled_20250303' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled_20250303.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled_20250303")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_grayscaled.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_grayscaled")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_epoch4' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_epoch4.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_epoch4")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled_epoch4' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled_epoch4.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled_epoch4")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best_grayscaled")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_20250303' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_20250303.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_20250303")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled_20250303' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled_20250303.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled_20250303")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_grayscaled.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_grayscaled")
 
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma05' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma05.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma05")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma15' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma15.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma15")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma3' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma3.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma3")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma05' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma05.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma05")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma15' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma15.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma15")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma3' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma3.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma3")
 
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma15_ver2' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma15_ver2.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_sigma15_ver2")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs4' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs4.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs4")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs10' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs10.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs10")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs50' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs50.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_blurred_epochs50")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best2' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best2.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed77_model_best2")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma15_ver2' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma15_ver2.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_sigma15_ver2")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs4' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs4.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs4")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs10' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs10.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs10")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs50' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs50.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_blurred_epochs50")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best2' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best2.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed77_model_best2")
         
         # 28way
         elif model_name == 'SL_resnet50_finetune_28way_IDEM_colorbg_seed777_model_best' :
@@ -1297,12 +1297,12 @@ def load_model(model_name):
             checkpoint = torch.load('resnet50_finetune_56way_IDEM_colorbg_seed777__from_scratch.pth.tar')
             print("loaded SL_resnet50_finetune_56way_IDEM_colorbg_seed777__from_scratch")
         # Dynamic blur
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_dynamicblur_linear' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_dynamicblur_linear.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_dynamicblur_linear")
-        elif model_name == 'SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_dynamicblur_linear_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_dynamicblur_linear_grayscaled.pth.tar')
-            print("loaded SL_resnet50_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_dynamicblur_linear_grayscaled")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_dynamicblur_linear' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_dynamicblur_linear.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_dynamicblur_linear")
+        elif model_name == 'SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_dynamicblur_linear_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_dynamicblur_linear_grayscaled.pth.tar')
+            print("loaded SL_resnet50_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_dynamicblur_linear_grayscaled")
         elif model_name == 'SL_resnet50_finetune_16way_IDEM_ssskd_colorbg_seed777' :
             checkpoint = torch.load('resnet50_finetune_16way_IDEM_ssskd_colorbg_seed777_.pth.tar')
             print(f"loaded SL_resnet50_finetune_16way_IDEM_ssskd_colorbg_seed777") 
@@ -1329,24 +1329,24 @@ def load_model(model_name):
         model.fc = nn.Linear(2048, num_ids)
         model = nn.DataParallel(model).cuda()
             # load model
-        if model_name == 'SL_resnet_untrained_camel_elephant_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL' :
-            checkpoint = torch.load('resnet_untrained_camel_elephant_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL.pth.tar')
-            print(f"loaded resnet_untrained_camel_elephant_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL") 
+        if model_name == 'SL_resnet_untrained_camel_elephant_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL' :
+            checkpoint = torch.load('resnet_untrained_camel_elephant_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL.pth.tar')
+            print(f"loaded resnet_untrained_camel_elephant_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL") 
         elif model_name == 'SL_resnet50_finetune_vbsle_50k_camel_elephant_seed777_model_best_SL_untrained' :
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_camel_elephant_seed777_model_best_SL_untrained.pth.tar')
             print(f"loaded SL_resnet50_finetune_vbsle_50k_camel_elephant_seed777_model_best_SL_untrained") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL_untrained' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL_untrained.pth.tar')
-            print(f"loaded resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL_untrained") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained.pth.tar')
+            print(f"loaded resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained") 
         elif model_name == 'SL_resnet_untrained_camel_elephant_finetune_vbsle_50k_6way_close_seed77_model_best_4way' :
             checkpoint = torch.load('resnet_untrained_camel_elephant_finetune_vbsle_50k_6way_close_seed77_model_best_4way.pth.tar')
             print(f"loaded resnet_untrained_camel_elephant_finetune_vbsle_50k_6way_close_seed77_model_best_4way") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL_untrained_Seojin' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL_untrained_Seojin.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL_untrained_Seojin") 
-        elif model_name == 'SL_resnet50_finetune_vbsl_50k_seed777_model_best_SL_untrained_Josh' :
-            checkpoint = torch.load('resnet50_finetune_vbsl_50k_seed777_model_best_SL_untrained_Josh.pth.tar')
-            print(f"loaded resnet50_finetune_vbsl_50k_seed777_model_best_SL_untrained_Josh") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained_AppleMesh02' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained_AppleMesh02.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained_AppleMesh02") 
+        elif model_name == 'SL_resnet50_finetune_vbsl_50k_seed777_model_best_SL_untrained_AppleMesh09' :
+            checkpoint = torch.load('resnet50_finetune_vbsl_50k_seed777_model_best_SL_untrained_AppleMesh09.pth.tar')
+            print(f"loaded resnet50_finetune_vbsl_50k_seed777_model_best_SL_untrained_AppleMesh09") 
         elif model_name == 'SL_resnet_untrained_camel_elephant_finetune_vbsle_50k_12way_seed77_model_best_12way' :
             checkpoint = torch.load('resnet_untrained_camel_elephant_finetune_vbsle_50k_12way_seed77_model_best_12way_more_epochs.pth.tar')
             print(f"loaded SL_resnet_untrained_camel_elephant_finetune_vbsle_50k_12way_seed77_model_best_12way") 
@@ -1354,14 +1354,14 @@ def load_model(model_name):
             checkpoint = torch.load('resnet_untrained_camel_elephant_finetune_vbsle_50k_12way_seed77_model_best_12way_more_epochs.pth.tar')
             print(f"loaded SL_resnet_untrained_camel_elephant_finetune_vbsle_50k_12way_seed77_model_best_12way") 
         elif model_name == 'SL_untrained_no_texture_texture' :
-            checkpoint = torch.load('resnet_untrained_elias_neptune_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_SL.pth.tar')
-            print(f"loaded resnet_untrained_elias_neptune_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_SL") 
-        elif model_name == 'SL_untrained_textured_elias_neptune' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_SL_untrained_textured_Seojin.pth.tar')
-            print(f"loaded resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_SL_untrained_textured_Seojin") 
+            checkpoint = torch.load('resnet_untrained_AppleMesh00_AppleMesh01_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_SL.pth.tar')
+            print(f"loaded resnet_untrained_AppleMesh00_AppleMesh01_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_SL") 
+        elif model_name == 'SL_untrained_textured_AppleMesh00_AppleMesh01' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained_textured_AppleMesh02.pth.tar')
+            print(f"loaded resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_SL_untrained_textured_AppleMesh02") 
         elif model_name == 'SL_untrained_texture_no_texture' :
-            checkpoint = torch.load('resnet50_textured_elias_neptune_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL.pth.tar')
-            print(f"loaded resnet50_textured_elias_neptune_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL") 
+            checkpoint = torch.load('resnet50_textured_AppleMesh00_AppleMesh01_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL.pth.tar')
+            print(f"loaded resnet50_textured_AppleMesh00_AppleMesh01_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL") 
         model.load_state_dict(checkpoint['state_dict'])
         # roll back from DataParallel`
         model = model.module        
@@ -1498,24 +1498,24 @@ def load_model(model_name):
         model.fc = nn.Linear(2048, num_ids)
         model = nn.DataParallel(model).cuda()
         # load model
-        if model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_4way' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_4way.pth.tar')
-            print(f"loaded resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_4way") 
-        if model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_camel_elephant_seed77_model_best_4way' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_camel_elephant_seed77_model_best_4way.pth.tar')
-            print(f"loaded SL_resnet50_finetune_vbsle_50k_elias_neptune_camel_elephant_seed77_model_best_4way") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed7_model_best_4way' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed7_model_best_4way.pth.tar')
-            print(f"loaded resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed7_model_best_4way") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed77_model_best_4way' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed77_model_best_4way.pth.tar')
-            print(f"loaded resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed77_model_best_4way") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed777_model_best_4way' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed777_model_best_4way.pth.tar')
-            print(f"loaded resnet50_finetune_vbsle_50k_elias_neptune_seojin_younah_seed777_model_best_4way") 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seojin_sreyas_seed77_model_best_4way' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seojin_sreyas_seed77_model_best_4way.pth.tar')
-            print(f"loaded resnet50_finetune_vbsle_50k_elias_neptune_seojin_sreyas_seed77_model_best_4way") 
+        if model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_4way' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_4way.pth.tar')
+            print(f"loaded resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_4way") 
+        if model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_camel_elephant_seed77_model_best_4way' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_camel_elephant_seed77_model_best_4way.pth.tar')
+            print(f"loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_camel_elephant_seed77_model_best_4way") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed7_model_best_4way' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed7_model_best_4way.pth.tar')
+            print(f"loaded resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed7_model_best_4way") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed77_model_best_4way' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed77_model_best_4way.pth.tar')
+            print(f"loaded resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed77_model_best_4way") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed777_model_best_4way' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed777_model_best_4way.pth.tar')
+            print(f"loaded resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh06_seed777_model_best_4way") 
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh05_seed77_model_best_4way' :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh05_seed77_model_best_4way.pth.tar')
+            print(f"loaded resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_AppleMesh02_AppleMesh05_seed77_model_best_4way") 
         elif model_name == 'SL_resnet50_finetune_vbsle_50k_4way_ADJS_seed77_model_best' :
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_4way_ADJS_seed77_model_best_4way.pth.tar')
             print(f"loaded SL_resnet50_finetune_vbsle_50k_4way_ADJS_seed77_model_best") 
@@ -1569,33 +1569,33 @@ def load_model(model_name):
         model.fc = nn.Linear(2048, num_ids)
         model = nn.DataParallel(model).cuda()
         # load model
-        if model_name == 'SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best' :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best") 
-        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer1' :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer1") 
-        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer2' :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer2") 
-        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer3' :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer3") 
-        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer4_no_pooling' :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_layer4_no_pooling") 
-        elif 'SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_grayscaled' in model_name :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_grayscaled.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_grayscaled") 
-        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_elias_neptune_seed777_model_best' :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_elias_neptune_seed777_model_best.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_elias_neptune_seed777_model_best") 
-        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_elias_neptune_seed777_model_best_grayscaled' :
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_elias_neptune_seed777_model_best_grayscaled.pth.tar')
-            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_elias_neptune_seed777_model_best_grayscaled") 
-        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_from_scratch':
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_from_scratch.pth.tar')
-            print("loaded SL_resnet50_finetune_texture_colorbg_2way_seojin_dan_seed777_model_best_from_scratch")
+        if model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best' :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best") 
+        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer1' :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer1") 
+        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer2' :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer2") 
+        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer3' :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer3") 
+        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer4_no_pooling' :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_layer4_no_pooling") 
+        elif 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_grayscaled' in model_name :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_grayscaled.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_grayscaled") 
+        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh00_AppleMesh01_seed777_model_best' :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh00_AppleMesh01_seed777_model_best.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh00_AppleMesh01_seed777_model_best") 
+        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh00_AppleMesh01_seed777_model_best_grayscaled' :
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh00_AppleMesh01_seed777_model_best_grayscaled.pth.tar')
+            print(f"loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh00_AppleMesh01_seed777_model_best_grayscaled") 
+        elif model_name == 'SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_from_scratch':
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_from_scratch.pth.tar')
+            print("loaded SL_resnet50_finetune_texture_colorbg_2way_AppleMesh02_AppleMesh04_seed777_model_best_from_scratch")
         model.load_state_dict(checkpoint['state_dict'])
         # roll back from DataParallel``
         model = model.module
@@ -1606,152 +1606,152 @@ def load_model(model_name):
         if 'trained' in model_name or 'pretrained' in model_name or 'finetune' in model_name:
             model.fc = nn.Linear(2048, 2)
         model = nn.DataParallel(model).cuda()
-        if model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best':
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL':
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_neptune_seed777_model_best_SL")
+        if model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best':
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL':
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_seed777_model_best_SL")
 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_texture_colorbg_seojin_ani_seed777_model_best':
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_seojin_ani_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_texture_colorbg_seojin_ani_seed777_model_best")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_texture_colorbg_seojin_tony_seed777_model_best':
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_seojin_tony_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_texture_colorbg_seojin_tony_seed777_model_best")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_texture_colorbg_seojin_kedar_seed777_model_best':
-            checkpoint = torch.load('resnet50_finetune_texture_colorbg_seojin_kedar_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_texture_colorbg_seojin_kedar_seed777_model_best")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_texture_colorbg_AppleMesh02_AppleMesh10_seed777_model_best':
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_AppleMesh02_AppleMesh10_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_texture_colorbg_AppleMesh02_AppleMesh10_seed777_model_best")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_texture_colorbg_AppleMesh02_AppleMesh11_seed777_model_best':
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_AppleMesh02_AppleMesh11_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_texture_colorbg_AppleMesh02_AppleMesh11_seed777_model_best")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_texture_colorbg_AppleMesh02_AppleMesh08_seed777_model_best':
+            checkpoint = torch.load('resnet50_finetune_texture_colorbg_AppleMesh02_AppleMesh08_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_texture_colorbg_AppleMesh02_AppleMesh08_seed777_model_best")
         
 
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_em_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_em_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_neptune_em_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_sophie_em_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_sophie_em_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_sophie_em_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_neptune_half_texture_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_neptune_half_texture_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_neptune_half_texture_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_em_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_em_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_em_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_em_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_em_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_em_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_half_texture_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_half_texture_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh01_half_texture_seed777_model_best_SL")
         elif model_name == 'SL_resnet50_finetune_vbsle_50k_disgust_surprise': # retrained 0927
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_disgust_surprise_seed777_model_best_SL.pth.tar')
             print("loaded resnet50_finetune_vbsle_50k_disgust_surprise_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_sreyas_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_sreyas_seed777_model_best_SL.pth.tar')
-            print("loaded resnet50_finetune_vbsle_50k_elias_sreyas_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_younah_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_younah_seed777_model_best_SL.pth.tar')
-            print("loaded resnet50_finetune_vbsle_50k_seojin_younah_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_neptune_younah_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_neptune_younah_seed777_model_best_SL.pth.tar')
-            print("loaded resnet50_finetune_vbsle_50k_neptune_younah_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_neptune_seojin_seed777_model_best_SL': # retrained 0927
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_neptune_seojin_seed777_model_best_SL.pth.tar')
-            print("loaded resnet50_finetune_vbsle_50k_neptune_seojin_seed777_model_best_SL")
-        # Seojin pairs----------------------------------------------------------------------------------------------
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_josh_seed777_model_best_SL': # seojin-josh
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_josh_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_josh_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_ashley_seed777_model_best_SL': # seojin-ashley
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_ashley_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_ashley_seed777_model_best_SL")
-        elif 'SL_resnet50_finetune_vbsle_50k_seojin_dan_seed777_model_best_SL' in model_name: # seojin-dan
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_dan_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_dan_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_sophie_seed777_model_best_SL': # seojin-sophie
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_sophie_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_sophie_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_sreyas_seed777_model_best_SL': # seojin-sreyas
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_sreyas_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_sreyas_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_kedar_seed777_model_best_SL': # seojin-kedar
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_kedar_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_kedar_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_elias_seed777_model_best_SL': # seojin-elias
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_elias_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_elias_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_ani_seed777_model_best_SL': # seojin-ani
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_ani_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_ani_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_tony_seed777_model_best_SL': # seojin-elias
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_tony_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_seojin_tony_seed777_model_best_SL")
-        # Josh pairs----------------------------------------------------------------------------------------------
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_ashley_seed777_model_best_SL': # josh-ashley
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_ashley_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_ashley_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_dan_seed777_model_best_SL': # josh-dan
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_dan_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_dan_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_ani_seed777_model_best_SL': # josh-ani
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_ani_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_ani_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_sophie_seed777_model_best_SL': # josh-sophie
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_sophie_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_sophie_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_sreyas_seed777_model_best_SL': # josh-sreyas
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_sreyas_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_sreyas_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_seojin_seed777_model_best_SL': # josh-seojin
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_seojin_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_seojin_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_younah_seed777_model_best_SL': # josh-younah
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_younah_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_younah_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_kedar_seed777_model_best_SL': # josh-kedar
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_kedar_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_kedar_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_josh_tony_seed777_model_best_SL': # josh-tony
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_josh_tony_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_josh_tony_seed777_model_best_SL")
-        # Elias pairs ----------------------------------------------------------------------------------------------
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_kedar_seed777_model_best_SL': # elias-kedar
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_kedar_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_kedar_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_sophie_seed777_model_best_SL': # elias-sophie
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_sophie_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_sophie_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_tony_seed777_model_best_SL': # elias-tony
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_tony_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_tony_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_ani_seed777_model_best_SL': # elias-ani
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_ani_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_ani_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_ashley_seed777_model_best_SL': # elias-ashley
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_ashley_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_ashley_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_josh_seed777_model_best_SL': # elias-josh
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_josh_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_josh_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_younah_seed777_model_best_SL': # elias-younah
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_younah_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_younah_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_seojin_elias_seed777_model_best_SL': # elias-seojin
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_elias_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_seojin_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_elias_dan_seed777_model_best_SL': # elias-dan
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_elias_dan_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_elias_dan_seed777_model_best_SL")
-        elif model_name == 'SL_resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_SL': # elias-dan
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_SL.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh05_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh05_seed777_model_best_SL.pth.tar')
+            print("loaded resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh05_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh06_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh06_seed777_model_best_SL.pth.tar')
+            print("loaded resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh06_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh01_AppleMesh06_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh01_AppleMesh06_seed777_model_best_SL.pth.tar')
+            print("loaded resnet50_finetune_vbsle_50k_AppleMesh01_AppleMesh06_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh01_AppleMesh02_seed777_model_best_SL': # retrained 0927
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh01_AppleMesh02_seed777_model_best_SL.pth.tar')
+            print("loaded resnet50_finetune_vbsle_50k_AppleMesh01_AppleMesh02_seed777_model_best_SL")
+        # AppleMesh02 pairs----------------------------------------------------------------------------------------------
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh09_seed777_model_best_SL': # AppleMesh02-AppleMesh09
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh09_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh09_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh07_seed777_model_best_SL': # AppleMesh02-AppleMesh07
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh07_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh07_seed777_model_best_SL")
+        elif 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best_SL' in model_name: # AppleMesh02-AppleMesh04
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_seed777_model_best_SL': # AppleMesh02-AppleMesh03
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh05_seed777_model_best_SL': # AppleMesh02-AppleMesh05
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh05_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh05_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh08_seed777_model_best_SL': # AppleMesh02-AppleMesh08
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh08_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh08_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh00_seed777_model_best_SL': # AppleMesh02-AppleMesh00
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh00_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh00_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh10_seed777_model_best_SL': # AppleMesh02-AppleMesh10
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh10_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh10_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh11_seed777_model_best_SL': # AppleMesh02-AppleMesh00
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh11_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh11_seed777_model_best_SL")
+        # AppleMesh09 pairs----------------------------------------------------------------------------------------------
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh07_seed777_model_best_SL': # AppleMesh09-AppleMesh07
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh07_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh07_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh04_seed777_model_best_SL': # AppleMesh09-AppleMesh04
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh04_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh04_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh10_seed777_model_best_SL': # AppleMesh09-AppleMesh10
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh10_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh10_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh03_seed777_model_best_SL': # AppleMesh09-AppleMesh03
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh03_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh03_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh05_seed777_model_best_SL': # AppleMesh09-AppleMesh05
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh05_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh05_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh02_seed777_model_best_SL': # AppleMesh09-AppleMesh02
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh02_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh02_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh06_seed777_model_best_SL': # AppleMesh09-AppleMesh06
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh06_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh06_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh08_seed777_model_best_SL': # AppleMesh09-AppleMesh08
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh08_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh08_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh11_seed777_model_best_SL': # AppleMesh09-AppleMesh11
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh11_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh09_AppleMesh11_seed777_model_best_SL")
+        # AppleMesh00 pairs ----------------------------------------------------------------------------------------------
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh08_seed777_model_best_SL': # AppleMesh00-AppleMesh08
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh08_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh08_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh03_seed777_model_best_SL': # AppleMesh00-AppleMesh03
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh03_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh03_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh11_seed777_model_best_SL': # AppleMesh00-AppleMesh11
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh11_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh11_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh10_seed777_model_best_SL': # AppleMesh00-AppleMesh10
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh10_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh10_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh07_seed777_model_best_SL': # AppleMesh00-AppleMesh07
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh07_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh07_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh09_seed777_model_best_SL': # AppleMesh00-AppleMesh09
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh09_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh09_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh06_seed777_model_best_SL': # AppleMesh00-AppleMesh06
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh06_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh06_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh00_seed777_model_best_SL': # AppleMesh00-AppleMesh02
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh00_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh02_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh04_seed777_model_best_SL': # AppleMesh00-AppleMesh04
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh04_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh00_AppleMesh04_seed777_model_best_SL")
+        elif model_name == 'SL_resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_SL': # AppleMesh00-AppleMesh04
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_SL.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_SL")
         
-        elif model_name == "SL_resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_grayscaled" :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_grayscaled.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_textured_elias_neptune_seed777_model_best_grayscaled")
+        elif model_name == "SL_resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_grayscaled" :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_grayscaled.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_textured_AppleMesh00_AppleMesh01_seed777_model_best_grayscaled")
 
-        elif model_name == "SL_resnet50_finetune_vbsle_50k_sophie_seojin_seed777_model_best" :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_sophie_seojin_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_sophie_seojin_seed777_model_best")
-        elif model_name == "SL_resnet50_finetune_vbsle_50k_sophie_kedar_seed777_model_best" :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_sophie_kedar_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_sophie_kedar_seed777_model_best")
-        elif model_name == "SL_resnet50_finetune_vbsle_50k_sophie_kedar_colorbg_seed777_model_best" :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_sophie_kedar_colorbg_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_sophie_kedar_colorbg_seed777_model_best")
-        elif model_name == "SL_resnet50_finetune_vbsle_50k_sophie_seojin_colorbg_seed777_model_best" :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_sophie_seojin_colorbg_seed777_model_best.pth.tar')
-            print("loaded SL_resnet50_finetune_vbsle_50k_sophie_seojin_colorbg_seed777_model_best")
+        elif model_name == "SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_seed777_model_best" :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_seed777_model_best")
+        elif model_name == "SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_seed777_model_best" :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_seed777_model_best")
+        elif model_name == "SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_colorbg_seed777_model_best" :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_colorbg_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_colorbg_seed777_model_best")
+        elif model_name == "SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_colorbg_seed777_model_best" :
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_colorbg_seed777_model_best.pth.tar')
+            print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_colorbg_seed777_model_best")
         
         model.load_state_dict(checkpoint['state_dict'])
         # roll back from DataParallel
@@ -1775,21 +1775,21 @@ def load_model(model_name):
             model.fc = nn.Linear(2048, 2)
         model = nn.DataParallel(model).cuda()
 
-        if model_name == 'SL_resnet50_elias_vs_neptune_model_best':
-            checkpoint = torch.load('resnet50_elias_vs_neptune_model_best.pth.tar')
-            print("loaded resnet50_elias_vs_neptune_model_best")
-        elif model_name == 'SL_resnet50_elias_vs_camel_model_best':
-            checkpoint = torch.load('resnet50_elias_vs_camel_model_best.pth.tar')
-            print("loaded resnet50_elias_vs_camel_model_best")
-        elif model_name == 'SL_resnet50_elias_vs_elephant_model_best':
-            checkpoint = torch.load('resnet50_elias_vs_elephant_model_best.pth.tar')
-            print("loaded SL_resnet50_elias_vs_elephant_model_best")
-        elif model_name == 'SL_resnet50_neptune_vs_camel_model_best':
-            checkpoint = torch.load('resnet50_neptune_vs_camel_model_best.pth.tar')
-            print("loaded SL_resnet50_neptune_vs_camel_model_best")
-        elif model_name == 'SL_resnet50_neptune_vs_elephant_model_best':
-            checkpoint = torch.load('resnet50_neptune_vs_elephant_model_best.pth.tar')
-            print("loaded SL_resnet50_neptune_vs_elephant_model_best")
+        if model_name == 'SL_resnet50_AppleMesh00_vs_AppleMesh01_model_best':
+            checkpoint = torch.load('resnet50_AppleMesh00_vs_AppleMesh01_model_best.pth.tar')
+            print("loaded resnet50_AppleMesh00_vs_AppleMesh01_model_best")
+        elif model_name == 'SL_resnet50_AppleMesh00_vs_camel_model_best':
+            checkpoint = torch.load('resnet50_AppleMesh00_vs_camel_model_best.pth.tar')
+            print("loaded resnet50_AppleMesh00_vs_camel_model_best")
+        elif model_name == 'SL_resnet50_AppleMesh00_vs_elephant_model_best':
+            checkpoint = torch.load('resnet50_AppleMesh00_vs_elephant_model_best.pth.tar')
+            print("loaded SL_resnet50_AppleMesh00_vs_elephant_model_best")
+        elif model_name == 'SL_resnet50_AppleMesh01_vs_camel_model_best':
+            checkpoint = torch.load('resnet50_AppleMesh01_vs_camel_model_best.pth.tar')
+            print("loaded SL_resnet50_AppleMesh01_vs_camel_model_best")
+        elif model_name == 'SL_resnet50_AppleMesh01_vs_elephant_model_best':
+            checkpoint = torch.load('resnet50_AppleMesh01_vs_elephant_model_best.pth.tar')
+            print("loaded SL_resnet50_AppleMesh01_vs_elephant_model_best")
         elif model_name == 'SL_resnet50_camel_vs_elephant_model_best':
             checkpoint = torch.load('resnet50_camel_vs_elephant_model_best.pth.tar')
             print("loaded SL_resnet50_camel_vs_elephant_model_best")
@@ -2187,7 +2187,7 @@ def load_model(model_name):
         model = nn.DataParallel(model).cuda()
         # load model
         epoch = int(120/num_ids)
-        filename = f'/mnt/smb/locker/issa-locker/users/Josh/data/saved_models/num_ids_ablation/resnet50_finetune_vbsl5k_id{num_ids}_epoch{epoch}_seed{seed}_model_best.pth.tar'
+        filename = f'/mnt/smb/locker/issa-locker/users/AppleMesh09/data/saved_models/num_ids_ablation/resnet50_finetune_vbsl5k_id{num_ids}_epoch{epoch}_seed{seed}_model_best.pth.tar'
         checkpoint = torch.load(filename)
         print(f"loaded {filename}, epoch{checkpoint['epoch']}") 
         model.load_state_dict(checkpoint['state_dict'])
