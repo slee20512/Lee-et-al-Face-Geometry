@@ -24,8 +24,8 @@ The repository is organized into two main sub-projects: **`proj-face`** (model t
 .
 ├── proj-face/                         # Model training, testing, RDM analysis
 ├── apple_facestim_generation/         # Stimulus generation via Apple ARKit
-├── scenefiles/                        # JSON scene files for model test stimuli generation
-├── human_behav_scenefiles/            # JSON scene files for human behavioral test stimuli generation
+├── scenefiles_anonymized/                        # JSON scene files for model test stimuli generation
+├── human_behav_scenefiles_anonymized/            # JSON scene files for human behavioral test stimuli generation
 ├── human_behavioral_data/            
 └── apple_facestim_generation/
     └── scaledCoordsMax_all_anonymized.mat  KEY FILE: all face identity & expression vertex matrices
@@ -102,8 +102,8 @@ Apply betas from Step 2 to generate faces with arbitrary expressions. See `StimG
 
 | Folder | Contents |
 |---|---|
-| `scenefiles/` | JSON scene files used to render **model test stimuli** |
-| `human_behav_scenefiles/` | JSON scene files used to render **human behavioral test stimuli** |
+| `scenefiles_anonymized/` | JSON scene files used to render **model test stimuli** |
+| `human_behav_scenefiles_anonymized/` | JSON scene files used to render **human behavioral test stimuli** |
 
 These scene files drive the rendering pipeline and reference face meshes built from `scaledCoordsMax_all_anonymized.mat`.
 
