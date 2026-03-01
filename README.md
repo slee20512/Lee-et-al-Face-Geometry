@@ -26,6 +26,7 @@ The repository is organized into two main sub-projects: **`proj-face`** (model t
 ├── apple_facestim_generation/         # Stimulus generation via Apple ARKit
 ├── scenefiles/                        # JSON scene files for model test stimuli generation
 ├── human_behav_scenefiles/            # JSON scene files for human behavioral test stimuli generation
+├── human_behavioral_data/            
 └── apple_facestim_generation/
     └── scaledCoordsMax_all_anonymized.mat  KEY FILE: all face identity & expression vertex matrices
 ```
@@ -106,7 +107,42 @@ Apply betas from Step 2 to generate faces with arbitrary expressions. See `StimG
 
 These scene files drive the rendering pipeline and reference face meshes built from `scaledCoordsMax_all_anonymized.mat`.
 
+
 ---
+
+## Human Behavioral Data
+
+Human psychophysics data used for model–human behavioral comparisons are provided in:
+
+human_behavior/
+
+
+### Contents
+
+- `human_trials.csv`  
+  Pooled trial-level responses across all participants performing a two-alternative forced-choice (2AFC) face matching task.
+
+- `human_emotion_confusion.npy`  
+- `human_identity_confusion.npy`  
+  Row-normalized human confusion matrices used for model comparison.
+
+- `human_split_halves/`  
+  Five independent split-half partitions (A/B) used to estimate behavioral reliability and noise ceilings.
+
+### Behavioral Task
+
+Participants performed match-to-sample face recognition tasks:
+
+- **Identity discrimination** (7 identities)
+- **Emotion recognition** (7 expressions)
+
+Each trial required selecting which of two faces matched a briefly presented sample image.
+
+These data provide the human behavioral benchmark reported in Fig. 6 of the manuscript.
+
+---
+
+
 
 ## Dependencies
 
