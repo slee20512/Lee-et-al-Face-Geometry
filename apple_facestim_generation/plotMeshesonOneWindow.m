@@ -1,7 +1,7 @@
 dotSize = 14;
 highlightedDotSize = 20;
 
-individualsToPlot = {'Elias_neutral'};  % add more fields as needed
+individualsToPlot = {'AppleMesh00_neutral'};  % add more fields as needed
 colors = lines(numel(individualsToPlot));   % auto-colors
 
 figure; hold on
@@ -28,7 +28,7 @@ axis equal vis3d; grid on; rotate3d on; hold off
 
 %% For the figure
 % List of individual mesh field names to plot
-individualsToPlot = {'Elias_fear_4', 'Elias_neutral', 'Elias_happiness_4', 'Elias_sadness_4', 'Elias_disgust_4', 'Elias_anger_4', 'Elias_surprise_4', 'Neptune_neutral', 'Seojin_neutral', 'Sophie_neutral', 'Dan_neutral', 'Sreyas_neutral', 'Younah_neutral', 'Ani_neutral', 'Josh_neutral', 'Ashley_neutral', 'Tony_neutral', 'Kedar_neutral'};  % Example
+individualsToPlot = {'AppleMesh00_fear_4', 'AppleMesh00_neutral', 'AppleMesh00_happiness_4', 'AppleMesh00_sadness_4', 'AppleMesh00_disgust_4', 'AppleMesh00_anger_4', 'AppleMesh00_surprise_4', 'AppleMesh01_neutral', 'AppleMesh02_neutral', 'AppleMesh03_neutral', 'AppleMesh04_neutral', 'AppleMesh05_neutral', 'AppleMesh06_neutral', 'AppleMesh10_neutral', 'AppleMesh09_neutral', 'AppleMesh07_neutral', 'AppleMesh11_neutral', 'AppleMesh08_neutral'};  % Example
 outputDir = './plots_for_paper/';  % <-- Replace with your actual folder path
 
 % Create the directory if it doesn't exist
