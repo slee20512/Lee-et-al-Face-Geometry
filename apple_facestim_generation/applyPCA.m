@@ -3,7 +3,7 @@
 
 num_faces = 12;
 num_vertices = 936;
-individuals = {'Elias', 'Neptune', 'Seojin', 'Sophie', 'Dan', 'Sreyas', 'Younah', 'Ashley', 'Josh', 'Kedar', 'Ani', 'Tony'};
+individuals = {'AppleMesh00', 'AppleMesh01', 'AppleMesh02', 'AppleMesh03', 'AppleMesh04', 'AppleMesh05', 'AppleMesh06', 'AppleMesh07', 'AppleMesh09', 'AppleMesh08', 'AppleMesh10', 'AppleMesh11'};
 emotions = {'neutral', 'happiness_4',  'surprise_4', 'sadness_4', 'disgust_4', 'anger_4','fear_4'};
 emotions_scaled ={'neutral', 'happiness_4',  'surprise_4', 'sadness_4', 'disgust_4', 'anger_4','fear_4'};
 
@@ -191,8 +191,8 @@ for i = 1:size(score_full, 1)
 end
 
 % Visualize the matrix
-identities = {'Elias', 'Neptune', 'Seojin', 'Sophie', 'Dan', 'Sreyas', ...
-              'Younah', 'Ashley', 'Josh', 'Kedar', 'Ani', 'Tony'};
+identities = {'AppleMesh00', 'AppleMesh01', 'AppleMesh02', 'AppleMesh03', 'AppleMesh04', 'AppleMesh05', ...
+              'AppleMesh06', 'AppleMesh07', 'AppleMesh09', 'AppleMesh08', 'AppleMesh10', 'AppleMesh11'};
 tick_positions = 3.5:7:84;
 section_bounds = 1:7:85;  % includes the final edge
 
