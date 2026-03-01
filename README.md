@@ -27,7 +27,7 @@ The repository is organized into two main sub-projects: **`proj-face`** (model t
 ├── scenefiles/                        # JSON scene files for model test stimuli generation
 ├── human_behav_scenefiles/            # JSON scene files for human behavioral test stimuli generation
 └── apple_facestim_generation/
-    └── scaledCoordsMax_all_updated.mat  KEY FILE: all face identity & expression vertex matrices
+    └── scaledCoordsMax_all_anonymized.mat  KEY FILE: all face identity & expression vertex matrices
 ```
 
 ---
@@ -57,7 +57,7 @@ This sub-project contains all notebooks and scripts for training and evaluating 
 | `MyIdeal3d.ipynb` | Compute performance and i1 from ideal 3D observer images; compare with biological data |
 | `MyMain.ipynb` | Extract model features, compute model i1, compare with biological i1 |
 | `MyRegAnalysis.ipynb` | Use latent variables (`vbsli*`) to predict model or biological i1 via regression |
-| `MyRDMAnalysis.ipynb` | Generate RDMs and compare model RDMs to the face space distance matrix (`scaledCoordsMax_all_updated.mat`) |
+| `MyRDMAnalysis.ipynb` | Generate RDMs and compare model RDMs to the face space distance matrix (`scaledCoordsMax_all_anonymized.mat`) |
 
 ### RDM Output Files (`rdm/`)
 
@@ -74,7 +74,7 @@ This sub-project contains MATLAB code (and one Swift iPhone app) for capturing 3
 
 ### Key Data File
 
-**`apple_facestim_generation/scaledCoordsMax_all_updated.mat`**
+**`apple_facestim_generation/scaledCoordsMax_all_anonymized.mat`**
 
 > This is the central data file for the entire stimulus set. It contains the vertex matrices summarizing **all face identities and expressions** used in the project. Both model and behavioral stimuli are derived from this file. Start here if you need to understand or reproduce any stimuli.
 
@@ -104,7 +104,7 @@ Apply betas from Step 2 to generate faces with arbitrary expressions. See `StimG
 | `scenefiles/` | JSON scene files used to render **model test stimuli** |
 | `human_behav_scenefiles/` | JSON scene files used to render **human behavioral test stimuli** |
 
-These scene files drive the rendering pipeline and reference face meshes built from `scaledCoordsMax_all_updated.mat`.
+These scene files drive the rendering pipeline and reference face meshes built from `scaledCoordsMax_all_anonymized.mat`.
 
 ---
 
