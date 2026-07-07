@@ -29,7 +29,7 @@ class Args():
 args = Args()
 
 args.arch = 'resnet50'
-args.batch_size = 128  # 2*batch_size augmented views go through the network per step
+args.batch_size = 64  # 2*batch_size augmented views go through the network per step -- 128 OOM'd on an 11GB 2080Ti even with AMP
 args.print_freq = 30
 args.num_workers = 8
 args.hidden_dim = 1024

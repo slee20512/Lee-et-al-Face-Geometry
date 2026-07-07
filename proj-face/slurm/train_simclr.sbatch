@@ -14,6 +14,7 @@ source $(conda info --base)/etc/profile.d/conda.sh
 conda activate faceproj
 export PYTHONNOUSERSITE=1
 export PYTHONUNBUFFERED=1  # otherwise stdout buffers fully when redirected to a file, and .out stays empty for a long time
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True  # reduce allocator fragmentation, helps headroom on an 11GB card
 
 OUTDIR=/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models
 mkdir -p "$OUTDIR"
