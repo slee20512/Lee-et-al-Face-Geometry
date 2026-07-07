@@ -121,6 +121,19 @@ optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.w
 scheduler = CosineAnnealingLR(optimizer, T_max=args.epochs)
 scaler = torch.cuda.amp.GradScaler()
 
+start_epoch = 0
+best_loss = float('inf')
+latest_filename = args.filename_prefix + 'latest_checkpoint.pth.tar'
+if os.path.exists(latest_filename):
+    print(f"resuming from {latest_filename}")
+    ckpt = torch.load(latest_filename, map_location='cuda')
+    model.load_state_dict(ckpt['state_dict'])
+    optimizer.load_state_dict(ckpt['optimizer'])
+    scheduler.load_state_dict(ckpt['scheduler'])
+    start_epoch = ckpt['epoch']
+    best_loss = ckpt['loss']
+    print(f"resumed at epoch {start_epoch}, best_loss {best_loss}")
+
 
 def train(train_loader, model, optimizer, epoch, args):
     batch_time = AverageMeter('Time', ':6.3f')
@@ -160,9 +173,7 @@ def train(train_loader, model, optimizer, epoch, args):
     return losses.avg
 
 
-best_loss = float('inf')
-
-for epoch in range(args.epochs):
+for epoch in range(start_epoch, args.epochs):
     epoch_loss = train(train_loader, model, optimizer, epoch, args)
     scheduler.step()
 
@@ -177,7 +188,6 @@ for epoch in range(args.epochs):
         'optimizer' : optimizer.state_dict(),
         'scheduler' : scheduler.state_dict()
         }
-    latest_filename = args.filename_prefix + 'latest_checkpoint.pth.tar'
     torch.save(_state, latest_filename)
     if is_best:
         shutil.copyfile(latest_filename, args.filename_prefix + 'model_best.pth.tar')

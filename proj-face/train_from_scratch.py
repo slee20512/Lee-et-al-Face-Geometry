@@ -98,6 +98,19 @@ optimizer = torch.optim.SGD(model.parameters(), args.lr,
 scheduler = MultiStepLR(optimizer, milestones=args.lr_milestones, gamma=0.1)
 scaler = torch.cuda.amp.GradScaler()
 
+start_epoch = 0
+best_acc1 = 0
+latest_filename = args.filename_prefix + 'latest_checkpoint.pth.tar'
+if os.path.exists(latest_filename):
+    print(f"resuming from {latest_filename}")
+    ckpt = torch.load(latest_filename, map_location='cuda')
+    model.load_state_dict(ckpt['state_dict'])
+    optimizer.load_state_dict(ckpt['optimizer'])
+    scheduler.load_state_dict(ckpt['scheduler'])
+    start_epoch = ckpt['epoch']
+    best_acc1 = ckpt['best_acc1']
+    print(f"resumed at epoch {start_epoch}, best_acc1 {best_acc1}")
+
 
 def train(train_loader, model, criterion, optimizer, epoch, args):
     batch_time = AverageMeter('Time', ':6.3f')
@@ -178,9 +191,7 @@ def validate(val_loader, model, criterion, args):
     return top1.avg
 
 
-best_acc1 = 0
-
-for epoch in range(args.epochs):
+for epoch in range(start_epoch, args.epochs):
     train(train_loader, model, criterion, optimizer, epoch, args)
 
     acc1 = validate(val_loader, model, criterion, args)
@@ -197,7 +208,6 @@ for epoch in range(args.epochs):
         'optimizer' : optimizer.state_dict(),
         'scheduler' : scheduler.state_dict()
         }
-    latest_filename = args.filename_prefix + 'latest_checkpoint.pth.tar'
     torch.save(_state, latest_filename)
     if is_best:
         shutil.copyfile(latest_filename, args.filename_prefix + 'model_best.pth.tar')
