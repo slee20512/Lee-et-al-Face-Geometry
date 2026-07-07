@@ -8,7 +8,7 @@
 #SBATCH --output=%x_%j.out
 #SBATCH --error=%x_%j.err
 
-set -euo pipefail
+set -eo pipefail  # NOT -u: conda.sh references unset $PS1 in a non-interactive shell
 
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate faceproj
