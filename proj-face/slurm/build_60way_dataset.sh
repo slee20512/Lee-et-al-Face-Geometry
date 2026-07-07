@@ -17,9 +17,11 @@
 # each class are parallelized (xargs -P) to offset per-file network overhead.
 #
 # Resumable: a class/split is skipped if the destination already has exactly
-# the target count, so a rerun after a transient failure only redoes the one
-# incomplete class. Each copy batch is retried once on failure to absorb
-# transient SMB errors under sustained concurrent load.
+# the target count, so a rerun after any failure only redoes the incomplete
+# class. Each copy batch is retried once on failure to absorb transient SMB
+# errors under sustained concurrent load; note the file-slicing below uses
+# `head | tail` (not `tail +K | head`) specifically to avoid a pipefail/SIGPIPE
+# false failure when head truncates a much longer upstream stream early.
 
 set -eo pipefail
 
@@ -49,7 +51,7 @@ copy_class() {
   find "$src_dir" -maxdepth 1 -type f | sort > "$filelist"
   local attempt
   for attempt in 1 2; do
-    if tail -n +"$((skip + 1))" "$filelist" | head -n "$n" | xargs -P "$PARALLEL" -I{} cp {} "$dest_dir/"; then
+    if head -n "$((skip + n))" "$filelist" | tail -n "$n" | xargs -P "$PARALLEL" -I{} cp {} "$dest_dir/"; then
       break
     elif [ "$attempt" -eq 2 ]; then
       rm -f "$filelist"
