@@ -107,7 +107,7 @@ def nt_xent_loss(z1, z2, temperature):
     z = torch.cat([z1, z2], dim=0)
     z = F.normalize(z, dim=1)
     sim = torch.mm(z, z.t()) / temperature
-    sim.fill_diagonal_(-1e9)
+    sim.fill_diagonal_(torch.finfo(sim.dtype).min)  # -1e9 overflows float16 under autocast
     targets = torch.cat([torch.arange(n, 2 * n), torch.arange(0, n)]).to(z.device)
     return F.cross_entropy(sim, targets)
 
