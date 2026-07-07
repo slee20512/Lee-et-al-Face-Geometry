@@ -13,6 +13,7 @@ set -eo pipefail  # NOT -u: conda.sh references unset $PS1 in a non-interactive 
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate faceproj
 export PYTHONNOUSERSITE=1
+export PYTHONUNBUFFERED=1  # otherwise stdout buffers fully when redirected to a file, and .out stays empty for a long time
 
 OUTDIR=/mnt/smb/locker/issa-locker/users/Seojin/data/saved_models
 mkdir -p "$OUTDIR"
