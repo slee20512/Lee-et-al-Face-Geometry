@@ -4,22 +4,14 @@ Read PyTorch model from .pth.tar checkpoint.
 
 import os
 import sys
-<<<<<<< HEAD
-
-=======
 import torchfile
->>>>>>> 535f7fc (temp update)
 import torch
 import torch.nn as nn
 from torch.utils import model_zoo
 
 import torchvision
 import torchvision.models as models
-<<<<<<< HEAD
-
-=======
 from collections import OrderedDict
->>>>>>> 535f7fc (temp update)
 from rn50_auxiliary_dm import rn50_auxiliary_dm
 
 model_urls = {
@@ -38,9 +30,6 @@ def load_model(model_name):
         model = Vgg_face_dag().cuda()
         ckpt = torch.load('./saved_models/vgg_face_dag.pth')
         model.load_state_dict(ckpt)
-<<<<<<< HEAD
-    
-=======
     elif model_name == 'vggface_finetune_56way_IDEM_colorbg_seed777':
         model = Vgg_face_dag().cuda()
         # Load checkpoint
@@ -256,15 +245,12 @@ def load_model(model_name):
         model.eval()
 
         
->>>>>>> 535f7fc (temp update)
     # intermediate layers
     elif 'resnet50_layer' in model_name or 'resnet50_subsampled' in model_name:
         model = models.__dict__['resnet50'](pretrained=True).cuda()
     elif 'alexnet_layer' in model_name:
         model = models.__dict__['alexnet'](pretrained=True).cuda()
     
-<<<<<<< HEAD
-=======
     elif model_name == 'vbsl50k_colorbg_AppleMesh00_AppleMesh01_contrastive_self_emotion_best_model':
         checkpoint_path = 'vbsl50k_colorbg_AppleMesh00_AppleMesh01_contrastive_self_emotion_best_model.pth'
         checkpoint = torch.load(checkpoint_path, map_location='cuda')
@@ -1908,7 +1894,6 @@ def load_model(model_name):
         # model.load_state_dict(new_state_dict)
         # model = model.module
 
->>>>>>> 535f7fc (temp update)
     # finetuning steps
 
     elif 'step' in model_name:
@@ -1962,8 +1947,6 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         # roll back from DataParallel
         model = model.module
-<<<<<<< HEAD
-=======
 
     elif "Basel_color_texture" in model_name :
         model = models.resnet50(pretrained=False)
@@ -2194,7 +2177,6 @@ def load_model(model_name):
         # roll back from DataParallel
         model = model.module
 
->>>>>>> 535f7fc (temp update)
     
     # subset ablation
     elif 'vbsl50k_subset' in model_name: # vbsl50k_subset_0.05
