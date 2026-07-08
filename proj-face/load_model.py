@@ -26,6 +26,46 @@ def load_model(model_name):
     # load default IN pretrained models
     if model_name in ['alexnet', 'vgg16', 'resnet50']:
         model = models.__dict__[model_name](pretrained=True).cuda()
+    elif model_name == 'SL_resnet50_scratch_28way_IDEM_colorbg_seed777_model_best':
+        # train_from_scratch.py: conditional DataParallel (only if >1 GPU), so a
+        # single-GPU run saves a plain (non-'module.'-prefixed) state_dict
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 28)
+        checkpoint = torch.load('resnet50_scratch_28way_IDEM_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_scratch_28way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_28way_IDEM_colorbg_seed777_model_best':
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_28way_IDEM_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_28way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_scratch_60way_IDEM_colorbg_seed777_model_best':
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 60)
+        checkpoint = torch.load('resnet50_scratch_60way_IDEM_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_scratch_60way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_finetune_60way_IDEM_colorbg_seed777_model_best':
+        # train_finetune_60way.py: same conditional-DataParallel/plain-state_dict situation as scratch above
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 60)
+        checkpoint = torch.load('resnet50_finetune_60way_IDEM_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_finetune_60way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_60way_IDEM_colorbg_seed777_model_best':
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_60way_IDEM_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_60way_IDEM_colorbg_seed777_model_best")
     elif model_name == 'vggface':
         model = Vgg_face_dag().cuda()
         ckpt = torch.load('./saved_models/vgg_face_dag.pth')
