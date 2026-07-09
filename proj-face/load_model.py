@@ -544,22 +544,22 @@ def load_model(model_name):
             checkpoint = torch.load('barlowtwins_finetune_vbsle_50k_12way_seed77_model_best_12way.pth.tar')
             print(f"loaded barlowtwins_finetune_vbsle_50k_12way_seed77_model_best_12way.pth.tar") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_IDEM_14way") 
+            checkpoint = torch.load('barlowtwins_finetune_14way_EM_seojin_sophie_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_IDEM_14way")
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_colorbg' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best.pth.tar')
-            print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_colorbg") 
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best.pth.tar')
+            print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_colorbg")
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_epochs10' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs10.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs10.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_epochs10") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_epochs50' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_EM_AppleMesh02_AppleMesh03_seed777_model_best_epochs50.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_EM_seojin_sophie_seed777_model_best_epochs50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_epochs50") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_colorbg_epochs50' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_epochs50.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_epochs50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_epochs50") 
         elif model_name == 'off_the_shelf_barlowtwins_IDEM_14way_graybg_epochs50' :
-            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh03_colorbg_seed777_model_best_grayscaled_epochs50.pth.tar')
+            checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_seojin_sophie_colorbg_seed777_model_best_grayscaled_epochs50.pth.tar')
             print(f"loaded off_the_shelf_barlowtwins_IDEM_14way_graybg_epochs50") 
         elif model_name == 'off_the_shelf_barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best' :
             checkpoint = torch.load('barlowtwins_finetune_14way_IDEM_AppleMesh02_AppleMesh04_colorbg_seed777_model_best.pth.tar')
