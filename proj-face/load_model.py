@@ -66,6 +66,59 @@ def load_model(model_name):
         model.load_state_dict(state_dict, strict=False)
         model = model.cuda()
         print("loaded SL_resnet50_simclr_60way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'adaface_ir50_ms1mv2':
+        # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
+        # Download the checkpoint from the repo's README model-zoo table
+        # (R50 / MS1MV2 row) and save it as adaface_ir50_ms1mv2.ckpt here.
+        import adaface_net
+        model = adaface_net.build_model('ir_50')
+        checkpoint = torch.load('adaface_ir50_ms1mv2.ckpt', map_location='cuda')
+        statedict = checkpoint['state_dict']
+        model_statedict = {key[6:]: val for key, val in statedict.items() if key.startswith('model.')}
+        model.load_state_dict(model_statedict)
+        model = model.cuda()
+        print("loaded adaface_ir50_ms1mv2")
+    elif model_name == 'magface_ir100_ms1mv2':
+        # https://github.com/IrvingMeng/MagFace -- backbone vendored as
+        # insightface_iresnet.py (shared with arcface_ir100_glint360k below).
+        # Download the checkpoint from the repo's README model-zoo table
+        # (MagFace / iResNet100 / MS1MV2 row) and save it as
+        # magface_ir100_ms1mv2.pth here.
+        from insightface_iresnet import iresnet100
+        model = iresnet100(num_classes=512)
+        checkpoint = torch.load('magface_ir100_ms1mv2.pth', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        # saved from a NetworkBuilder_inf(nn.Module) wrapper whose backbone
+        # lived under self.features -- keys look like 'features.module.X' or
+        # 'module.features.X'; strip down to the bare iresnet100 key names.
+        new_state_dict = {}
+        for k, v in state_dict.items():
+            new_k = k.split('features.')[-1] if 'features.' in k else k
+            new_k = new_k.replace('module.', '')
+            if new_k in model.state_dict() and v.shape == model.state_dict()[new_k].shape:
+                new_state_dict[new_k] = v
+        print(f"magface key match: {len(new_state_dict)}/{len(model.state_dict())}")
+        model.load_state_dict(new_state_dict, strict=True)
+        model = model.cuda()
+        print("loaded magface_ir100_ms1mv2")
+    elif model_name == 'arcface_ir100_glint360k':
+        # https://github.com/deepinsight/insightface/tree/master/recognition/arcface_torch
+        # Same iresnet100 architecture as MagFace (verified: identical module
+        # names -> identical state_dict keys), reuses insightface_iresnet.py.
+        # Checkpoint isn't a single-file download link like the other two --
+        # get it from the arcface_torch README's OneDrive/Baidu model zoo
+        # (glint360k r100 backbone.pth) and save it as
+        # arcface_ir100_glint360k.pth here. If it 404s on load_state_dict,
+        # the checkpoint is probably still wrapped/prefixed and needs the
+        # same key-stripping treatment as magface above -- check its raw
+        # state_dict keys first.
+        from insightface_iresnet import iresnet100
+        model = iresnet100(num_classes=512)
+        checkpoint = torch.load('arcface_ir100_glint360k.pth', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=True)
+        model = model.cuda()
+        print("loaded arcface_ir100_glint360k")
     elif model_name == 'vggface':
         model = Vgg_face_dag().cuda()
         ckpt = torch.load('./saved_models/vgg_face_dag.pth')
