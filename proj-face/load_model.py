@@ -1738,7 +1738,7 @@ def load_model(model_name):
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best_SL.pth.tar')
             print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh04_seed777_model_best_SL")
         elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_seed777_model_best_SL': # AppleMesh02-AppleMesh03
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_seed777_model_best_SL.pth.tar')
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_seojin_sophie_seed777_model_best_SL.pth.tar')
             print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh03_seed777_model_best_SL")
         elif model_name == 'SL_resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh05_seed777_model_best_SL': # AppleMesh02-AppleMesh05
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh02_AppleMesh05_seed777_model_best_SL.pth.tar')
@@ -1823,7 +1823,7 @@ def load_model(model_name):
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_seed777_model_best.pth.tar')
             print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh02_seed777_model_best")
         elif model_name == "SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_seed777_model_best" :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_seed777_model_best.pth.tar')
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_sophie_kedar_seed777_model_best.pth.tar')
             print("loaded SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_seed777_model_best")
         elif model_name == "SL_resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_colorbg_seed777_model_best" :
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_AppleMesh03_AppleMesh08_colorbg_seed777_model_best.pth.tar')
