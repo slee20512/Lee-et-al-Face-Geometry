@@ -90,10 +90,14 @@ def load_model(model_name):
         state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
         # saved from a NetworkBuilder_inf(nn.Module) wrapper whose backbone
         # lived under self.features -- keys look like 'features.module.X' or
-        # 'module.features.X'; strip down to the bare iresnet100 key names.
+        # 'module.features.X'. IResNet itself also has a layer literally
+        # named 'features' (the final BatchNorm1d), so a key can look like
+        # 'features.features.weight' -- split only once (maxsplit=1) so that
+        # inner 'features.' survives and only the wrapper's outer one is
+        # stripped.
         new_state_dict = {}
         for k, v in state_dict.items():
-            new_k = k.split('features.')[-1] if 'features.' in k else k
+            new_k = k.split('features.', 1)[-1] if 'features.' in k else k
             new_k = new_k.replace('module.', '')
             if new_k in model.state_dict() and v.shape == model.state_dict()[new_k].shape:
                 new_state_dict[new_k] = v
