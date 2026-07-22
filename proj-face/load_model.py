@@ -106,6 +106,26 @@ def load_model(model_name):
         model.load_state_dict(state_dict, strict=False)
         model = model.cuda()
         print("loaded SL_resnet50_simclr_7way_EM_dan_colorbg_scratch_seed777_model_best")
+    elif model_name == 'SL_resnet50_curriculum_simclr_7way_EM_seojin_from_simclr60way_lr3e-4_seed777_model_best':
+        # train_curriculum_simclr_7way_EM_seojin_lr3e4.py: stage-2 curriculum fine-tune
+        # (SimCLR, lr 3e-4) of the SimCLR 60-way backbone on seojin's 7-way emotion images
+        # (vbsle_50k/7way_EM_seojin/ -- not the _texture_colorbg variant used for dan)
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_curriculum_simclr_7way_EM_seojin_from_simclr60way_lr3e-4_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_curriculum_simclr_7way_EM_seojin_from_simclr60way_lr3e-4_seed777_model_best")
+    elif model_name == 'SL_resnet50_curriculum_sl_7way_EM_seojin_from_scratch60way_lr3e-4_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin.py: stage-2 curriculum fine-tune (supervised,
+        # lr 3e-4) of the from-scratch 60-way backbone on seojin's 7-way emotion task
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 7)
+        checkpoint = torch.load('resnet50_curriculum_sl_7way_EM_seojin_from_scratch60way_lr3e-4_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_curriculum_sl_7way_EM_seojin_from_scratch60way_lr3e-4_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
