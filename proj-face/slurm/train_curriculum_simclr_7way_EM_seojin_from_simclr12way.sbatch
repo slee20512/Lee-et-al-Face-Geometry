@@ -10,6 +10,7 @@
 
 set -eo pipefail  # NOT -u: conda.sh references unset $PS1 in a non-interactive shell
 
+module load anaconda3-2019.03  # ensure `conda` is on PATH regardless of the submitting shell's state
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate faceproj
 export PYTHONNOUSERSITE=1
