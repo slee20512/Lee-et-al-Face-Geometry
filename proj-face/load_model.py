@@ -251,6 +251,26 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet50_curriculum_sl_7way_EM_seojin_from_finetune12way_seed777_model_best")
+    elif model_name == 'SL_resnet18_curriculum_sl_7way_EM_seojin_from_scratch60way_lr3e-4_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_from_scratch60way_resnet18.py: stage-2
+        # curriculum fine-tune of the resnet18 60-way backbone (Acc@1 97.024) on the
+        # geometry-only 7-way emotion task -- Acc@1 79.208
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 7)
+        checkpoint = torch.load('resnet18_curriculum_sl_7way_EM_seojin_from_scratch60way_lr3e-4_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_curriculum_sl_7way_EM_seojin_from_scratch60way_lr3e-4_seed777_model_best")
+    elif model_name == 'SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch60way_lr3e-4_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_colorbg_from_scratch60way_resnet18.py:
+        # textured-domain mirror of the above -- backbone and target dataset both
+        # textured, keeping the domain consistent -- Acc@1 96.639
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 7)
+        checkpoint = torch.load('resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch60way_lr3e-4_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch60way_lr3e-4_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
