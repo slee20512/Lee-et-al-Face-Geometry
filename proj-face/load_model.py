@@ -126,6 +126,131 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet50_curriculum_sl_7way_EM_seojin_from_scratch60way_lr3e-4_seed777_model_best")
+    elif model_name == 'SL_resnet18_scratch_60way_IDEM_colorbg_seed777_model_best':
+        # train_from_scratch_60way_resnet18.py: resnet18 ablation of the supervised
+        # from-scratch 60-way run
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 60)
+        checkpoint = torch.load('resnet18_scratch_60way_IDEM_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_scratch_60way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet18_simclr_60way_IDEM_colorbg_seed777_model_best':
+        # train_simclr_60way_resnet18.py: resnet18 ablation of the SimCLR 60-way run
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(512, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet18_simclr_60way_IDEM_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet18_simclr_60way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_28way_IDEM_seed777_model_best':
+        # train_simclr_28way_IDEM_scratch.py: SimCLR on the 28-way geometry-only
+        # dataset (no colorbg) -- stage 1 of the geometry->texture curriculum
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_28way_IDEM_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_28way_IDEM_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_vbsle_50k_12way_seed777_model_best':
+        # train_simclr_12way_scratch.py: SimCLR on the 12-way pure-identity geometry
+        # dataset -- stage 1 of the 12way->7way SimCLR curriculum
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_vbsle_50k_12way_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_vbsle_50k_12way_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_texture_colorbg_12way_seed777_model_best':
+        # train_simclr_12way_colorbg_scratch.py: textured-domain mirror of the
+        # SimCLR 12-way identity run above
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_texture_colorbg_12way_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_texture_colorbg_12way_seed777_model_best")
+    elif model_name == 'SL_resnet50_scratch_vbsle_50k_12way_seed777_model_best':
+        # train_from_scratch_12way_supervised.py: lr=0.1 -- converged to chance-level
+        # accuracy/loss (~8.3% / ln(12)) over all 100 epochs
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 12)
+        checkpoint = torch.load('resnet50_scratch_vbsle_50k_12way_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_scratch_vbsle_50k_12way_seed777_model_best")
+    elif model_name == 'SL_resnet50_curriculum_sl_7way_EM_seojin_from_scratch12way_lr3e-4_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_from_scratch12way.py: stage-2 curriculum
+        # fine-tune on top of the chance-level lr=0.1 backbone above
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 7)
+        checkpoint = torch.load('resnet50_curriculum_sl_7way_EM_seojin_from_scratch12way_lr3e-4_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_curriculum_sl_7way_EM_seojin_from_scratch12way_lr3e-4_seed777_model_best")
+    elif model_name == 'SL_resnet50_scratch_vbsle_50k_12way_lr0.01_seed777_model_best':
+        # train_from_scratch_12way_supervised_lr0.01.py: lr ablation of the above --
+        # also converged to chance level, ruling out learning rate as the cause
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 12)
+        checkpoint = torch.load('resnet50_scratch_vbsle_50k_12way_lr0.01_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_scratch_vbsle_50k_12way_lr0.01_seed777_model_best")
+    elif model_name == 'SL_resnet18_scratch_vbsle_50k_12way_seed777_model_best':
+        # train_from_scratch_12way_supervised_resnet18.py: resnet18 ablation of the
+        # from-scratch 12-way identity run -- also converged to chance level
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 12)
+        checkpoint = torch.load('resnet18_scratch_vbsle_50k_12way_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_scratch_vbsle_50k_12way_seed777_model_best")
+    elif model_name == 'SL_resnet18_curriculum_sl_7way_EM_seojin_from_scratch12way_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_from_scratch12way_resnet18.py: stage-2
+        # curriculum fine-tune on top of the chance-level resnet18 backbone above --
+        # reached Acc@1 90.779 on the 7-way emotion task despite the backbone never
+        # resolving 12-way identity
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 7)
+        checkpoint = torch.load('resnet18_curriculum_sl_7way_EM_seojin_from_scratch12way_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_curriculum_sl_7way_EM_seojin_from_scratch12way_seed777_model_best")
+    elif model_name == 'SL_resnet50_scratch_vbsle_50k_12way_ver2_seed777_model_best':
+        # train_from_scratch_12way_supervised_ver2.py: lr warmup + cosine schedule +
+        # Adam + low weight decay, in place of the plain-SGD/step-decay recipe above --
+        # reached Acc@1 95.628, breaking away from the chance level every other
+        # from-scratch recipe on this dataset converged to
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 12)
+        checkpoint = torch.load('resnet50_scratch_vbsle_50k_12way_ver2_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_scratch_vbsle_50k_12way_ver2_seed777_model_best")
+    elif model_name == 'SL_resnet50_finetune_vbsle_50k_12way_seed777_model_best':
+        # train_finetune_12way_supervised.py: ImageNet-pretrained finetune -- not part
+        # of the from-scratch comparison, kept as a reference point (Acc@1 98.559)
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 12)
+        checkpoint = torch.load('resnet50_finetune_vbsle_50k_12way_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_finetune_vbsle_50k_12way_seed777_model_best")
+    elif model_name == 'SL_resnet50_curriculum_sl_7way_EM_seojin_from_finetune12way_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_from_finetune12way.py: stage-2 curriculum
+        # fine-tune on top of the ImageNet-pretrained backbone above -- reference
+        # point only, not part of the from-scratch comparison (Acc@1 97.930)
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 7)
+        checkpoint = torch.load('resnet50_curriculum_sl_7way_EM_seojin_from_finetune12way_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_curriculum_sl_7way_EM_seojin_from_finetune12way_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
