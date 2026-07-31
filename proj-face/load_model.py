@@ -271,6 +271,18 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch60way_lr3e-4_seed777_model_best")
+    elif model_name == 'SL_resnet50_curriculum_simclr_7way_EM_seojin_colorbg_from_simclr12way_colorbg_seed777_model_best':
+        # train_curriculum_simclr_7way_EM_seojin_colorbg_from_simclr12way_colorbg.py:
+        # stage-2 curriculum (SimCLR) on top of the textured 12-way identity SimCLR
+        # backbone, continued on the textured 7-way emotion set -- converged to
+        # ~2.89 NT-Xent loss, in line with the other completed SimCLR runs
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_curriculum_simclr_7way_EM_seojin_colorbg_from_simclr12way_colorbg_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_curriculum_simclr_7way_EM_seojin_colorbg_from_simclr12way_colorbg_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
