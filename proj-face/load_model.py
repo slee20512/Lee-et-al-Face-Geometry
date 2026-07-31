@@ -283,6 +283,37 @@ def load_model(model_name):
         model.load_state_dict(state_dict, strict=False)
         model = model.cuda()
         print("loaded SL_resnet50_curriculum_simclr_7way_EM_seojin_colorbg_from_simclr12way_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_vbsle_50k_12way_ver2_seed777_model_best':
+        # train_simclr_12way_scratch_ver2.py: warmup+cosine ablation of the 12-way
+        # identity SimCLR backbone -- converged to ~2.881 NT-Xent loss
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_vbsle_50k_12way_ver2_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_vbsle_50k_12way_ver2_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_60way_IDEM_colorbg_from_simclr28way_seed777_model_best':
+        # train_simclr_60way_from_simclr28way.py: stage-2 curriculum (SimCLR) on top
+        # of the 28-way geometry SimCLR backbone, continued on the 60-way texture
+        # dataset -- the geometry->texture curriculum -- converged to ~2.884 loss
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_60way_IDEM_colorbg_from_simclr28way_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_60way_IDEM_colorbg_from_simclr28way_seed777_model_best")
+    elif model_name == 'SL_resnet50_simclr_60way_IDEM_colorbg_ver2_seed777_model_best':
+        # train_simclr_60way_ver2.py: warmup+cosine ablation of the 60-way texture
+        # SimCLR run -- converged to ~2.888 NT-Xent loss
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
+        checkpoint = torch.load('resnet50_simclr_60way_IDEM_colorbg_ver2_seed777_model_best.pth.tar', map_location='cuda')
+        state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+        model = model.cuda()
+        print("loaded SL_resnet50_simclr_60way_IDEM_colorbg_ver2_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
