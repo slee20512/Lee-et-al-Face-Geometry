@@ -314,6 +314,29 @@ def load_model(model_name):
         model.load_state_dict(state_dict, strict=False)
         model = model.cuda()
         print("loaded SL_resnet50_simclr_60way_IDEM_colorbg_ver2_seed777_model_best")
+    elif model_name == 'SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_resnet18.py:
+        # textured-domain mirror of the geometry 12way->7way resnet18 curriculum
+        # (Acc@1 90.779) -- Acc@1 76.985, same pattern of the chance-level 12-way
+        # backbone still yielding a strong 7-way emotion result
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 7)
+        checkpoint = torch.load('resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_seed777_model_best")
+    elif model_name == 'SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_lr3e-5_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_resnet18_lr3e-5.py:
+        # lr=3e-5 ablation of the above (vs. 3e-4) -- Acc@1 17.599, barely above the
+        # 14.29% chance level; 20 epochs at this lr wasn't enough signal to actually
+        # learn the emotion task, unlike the intended effect of preserving backbone
+        # features while still adapting
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 7)
+        checkpoint = torch.load('resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_lr3e-5_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_lr3e-5_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
