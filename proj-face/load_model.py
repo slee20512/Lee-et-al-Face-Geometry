@@ -370,6 +370,29 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet50_scratch_texture_colorbg_12way_ver2_seed777_model_best")
+    elif model_name == 'SL_resnet50_curriculum_sl_7way_EM_seojin_from_scratch_texture_colorbg_12way_ver2_warmup_seed777_model_best':
+        # train_curriculum_sl_7way_EM_seojin_from_scratch_texture_colorbg_12way_ver2_warmup.py:
+        # cross-domain curriculum (textured 12-way ver2 backbone -> geometry-only
+        # 7-way emotion), Adam+warmup+cosine recipe -- Acc@1 91.804. The plain
+        # SGD+MultiStepLR version of this same curriculum stayed at chance level
+        # (~14.6%) through epoch 17.
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 7)
+        checkpoint = torch.load('resnet50_curriculum_sl_7way_EM_seojin_from_scratch_texture_colorbg_12way_ver2_warmup_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_curriculum_sl_7way_EM_seojin_from_scratch_texture_colorbg_12way_ver2_warmup_seed777_model_best")
+    elif model_name == 'SL_resnet50_curriculum_sl_28way_IDEM_from_scratch_texture_colorbg_12way_ver2_warmup_seed777_model_best':
+        # train_curriculum_sl_28way_IDEM_from_scratch_texture_colorbg_12way_ver2_warmup.py:
+        # same recipe change, cross-domain curriculum onto 28-way IDEM instead --
+        # Acc@1 56.245. The plain SGD+MultiStepLR version stayed near chance
+        # (~3.6-4.5%) throughout.
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 28)
+        checkpoint = torch.load('resnet50_curriculum_sl_28way_IDEM_from_scratch_texture_colorbg_12way_ver2_warmup_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_curriculum_sl_28way_IDEM_from_scratch_texture_colorbg_12way_ver2_warmup_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
