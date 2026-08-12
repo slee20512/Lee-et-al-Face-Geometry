@@ -360,6 +360,16 @@ def load_model(model_name):
         model.load_state_dict(state_dict, strict=False)
         model = model.cuda()
         print("loaded SL_resnet50_curriculum_simclr_28way_IDEM_from_simclr12way_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_scratch_texture_colorbg_12way_ver2_seed777_model_best':
+        # train_from_scratch_texture_colorbg_12way_supervised_ver2.py: textured-domain
+        # mirror of the geometry ver2 recipe (warmup+cosine+Adam+low wd) -- Acc@1
+        # 99.995, notably higher than the geometry version's 95.628
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 12)
+        checkpoint = torch.load('resnet50_scratch_texture_colorbg_12way_ver2_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_scratch_texture_colorbg_12way_ver2_seed777_model_best")
     elif model_name == 'adaface_ir50_ms1mv2':
         # https://github.com/mk-minchul/AdaFace -- vendored as adaface_net.py.
         # Download the checkpoint from the repo's README model-zoo table
