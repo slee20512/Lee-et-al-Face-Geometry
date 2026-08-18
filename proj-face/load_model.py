@@ -24,8 +24,15 @@ def load_model(model_name):
     print(f"loading {model_name}")
     
     # load default IN pretrained models
-    if model_name in ['alexnet', 'vgg16', 'resnet50']:
+    if model_name in ['alexnet', 'vgg16', 'resnet50', 'resnet18']:
         model = models.__dict__[model_name](pretrained=True).cuda()
+    elif model_name == 'resnet18_random_init_seed777':
+        # no training -- floor baseline for the resnet18 ablation lineage (item 9,
+        # curriculum-training follow-up): untrained weights, same seed convention as
+        # the from-scratch scripts so the init is reproducible across runs.
+        torch.manual_seed(777)
+        model = models.resnet18(pretrained=False).cuda()
+        print("loaded resnet18_random_init_seed777")
     elif model_name == 'SL_resnet50_scratch_28way_IDEM_colorbg_seed777_model_best':
         # train_from_scratch.py: conditional DataParallel (only if >1 GPU), so a
         # single-GPU run saves a plain (non-'module.'-prefixed) state_dict
@@ -1868,7 +1875,7 @@ def load_model(model_name):
         model = nn.DataParallel(model).cuda()
         # load model
         if model_name == 'SL_resnet50_finetune_vbsle_50k_seed77_model_best_6way' :
-            checkpoint = torch.load('resnet50_finetune_vbsle_50k_6way_seed77_model_best_4way.pth.tar')
+            checkpoint = torch.load('resnet50_finetune_vbsle_50k_6way_seed77_model_best_6way.pth.tar')
             print(f"loaded SL_resnet50_finetune_vbsle_50k_seed77_model_best_6way") 
         elif model_name == 'SL_resnet50_finetune_vbsle_50k_seed77_model_best_6way' :
             checkpoint = torch.load('resnet50_finetune_vbsle_50k_6way_seed77_model_best_4way.pth.tar')
