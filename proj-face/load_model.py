@@ -344,6 +344,44 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet18_curriculum_sl_7way_EM_seojin_colorbg_from_scratch12way_lr3e-5_seed777_model_best")
+    elif model_name == 'SL_resnet18_scratch_7way_EM_seojin_seed777_model_best':
+        # train_from_scratch_7way_EM_seojin_resnet18.py: item 12 stage 1, reversed
+        # curriculum (emotion -> identity, instead of the original identity ->
+        # emotion) -- resnet18 from scratch on seojin's 7-way emotion set,
+        # geometry-only -- Acc@1 98.065, near ceiling. Unlike the analogous stage-1
+        # of the original-order curriculum (12-way identity from scratch, which
+        # stayed at chance), this reversed stage-1 learned its task easily.
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 7)
+        checkpoint = torch.load('resnet18_scratch_7way_EM_seojin_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_scratch_7way_EM_seojin_seed777_model_best")
+    elif model_name == 'SL_resnet18_curriculum_sl_12way_from_scratch7way_EM_seojin_seed777_model_best':
+        # train_curriculum_sl_12way_from_scratch7way_EM_seojin_resnet18.py: item 12
+        # stage 2, reversed curriculum, geometry-target 12-way identity -- Acc@1
+        # 8.133, essentially exactly chance (8.33%). Unlike the original
+        # identity -> emotion curriculum direction (which transferred to ~91% from a
+        # chance-level backbone), this reversed stage 2 did not break away from
+        # chance despite a near-ceiling (98.065%) stage-1 backbone.
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 12)
+        checkpoint = torch.load('resnet18_curriculum_sl_12way_from_scratch7way_EM_seojin_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_curriculum_sl_12way_from_scratch7way_EM_seojin_seed777_model_best")
+    elif model_name == 'SL_resnet18_curriculum_sl_12way_colorbg_from_scratch7way_EM_seojin_seed777_model_best':
+        # train_curriculum_sl_12way_colorbg_from_scratch7way_EM_seojin_resnet18.py:
+        # item 12 stage 2, reversed curriculum, textured-domain mirror of the above --
+        # Acc@1 10.449, only modestly above chance (8.33%). Same pattern as the
+        # geometry-target version: the reversed curriculum's stage 2 stays close to
+        # chance regardless of target-domain texture.
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 12)
+        checkpoint = torch.load('resnet18_curriculum_sl_12way_colorbg_from_scratch7way_EM_seojin_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_curriculum_sl_12way_colorbg_from_scratch7way_EM_seojin_seed777_model_best")
     elif model_name == 'SL_resnet50_curriculum_simclr_7way_EM_seojin_from_simclr12way_colorbg_seed777_model_best':
         # train_curriculum_simclr_7way_EM_seojin_from_simclr12way_colorbg.py:
         # cross-domain curriculum -- textured 12-way identity SimCLR backbone,
