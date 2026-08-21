@@ -42,6 +42,16 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet50_scratch_28way_IDEM_colorbg_seed777_model_best")
+    elif model_name == 'SL_resnet50_scratch_28way_IDEM_seed777_model_best':
+        # train_from_scratch_28way_IDEM.py: plain (no colorbg) counterpart of
+        # SL_resnet50_scratch_28way_IDEM_colorbg_seed777_model_best above -- same
+        # conditional DataParallel behavior, so a single-GPU run saves a plain state_dict
+        model = models.resnet50(pretrained=False)
+        model.fc = nn.Linear(2048, 28)
+        checkpoint = torch.load('resnet50_scratch_28way_IDEM_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet50_scratch_28way_IDEM_seed777_model_best")
     elif model_name == 'SL_resnet50_simclr_28way_IDEM_colorbg_seed777_model_best':
         model = models.resnet50(pretrained=False)
         model.fc = nn.Sequential(nn.Linear(2048, 1024), nn.ReLU(inplace=True), nn.Linear(1024, 128))
