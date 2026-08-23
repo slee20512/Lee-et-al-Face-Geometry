@@ -53,9 +53,7 @@ def load_model(model_name):
         print("loaded SL_resnet18_scratch_28way_IDEM_colorbg_seed777_model_best")
     elif model_name == 'SL_resnet18_scratch_28way_IDEM_combined_seed777_model_best':
         # train_from_scratch_28way_combined_resnet18.py: ConcatDataset of plain
-        # 28way_IDEM + 28way_IDEM_colorbg (same 28 classes, 2x images/class) --
-        # NOTE: as of registering this, the training job is still running, so this
-        # checkpoint reflects the best validation accuracy so far, not a finished run
+        # 28way_IDEM + 28way_IDEM_colorbg (same 28 classes, 2x images/class)
         model = models.resnet18(pretrained=False)
         model.fc = nn.Linear(512, 28)
         checkpoint = torch.load('resnet18_scratch_28way_IDEM_combined_seed777_model_best.pth.tar', map_location='cuda')
