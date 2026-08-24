@@ -70,6 +70,28 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet18_finetune_28way_IDEM_combined_seed777_model_best")
+    elif model_name == 'SL_resnet18_finetune_12way_combined_seed777_model_best':
+        # train_finetune_12way_combined_resnet18.py: ImageNet-pretrained fine-tune on the
+        # combined (plain vbsle_50k_12way + colorbg texture_colorbg_12way) 12-way
+        # identity-only dataset
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 12)
+        checkpoint = torch.load('resnet18_finetune_12way_combined_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_finetune_12way_combined_seed777_model_best")
+    elif model_name == 'SL_resnet18_scratch_12way_combined_seed777_model_best':
+        # train_from_scratch_12way_combined_resnet18.py: random-init counterpart of
+        # SL_resnet18_finetune_12way_combined_seed777_model_best above, same combined
+        # 12-way identity-only dataset -- NOTE: as of registering this, the training job
+        # may still be running (100-epoch schedule vs. the 30-epoch finetune run), so this
+        # points at model_best.pth.tar, which updates as the run improves
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 12)
+        checkpoint = torch.load('resnet18_scratch_12way_combined_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_scratch_12way_combined_seed777_model_best")
     elif model_name == 'SL_resnet50_scratch_28way_IDEM_seed777_model_best':
         # train_from_scratch_28way_IDEM.py: plain (no colorbg) counterpart of
         # SL_resnet50_scratch_28way_IDEM_colorbg_seed777_model_best above -- same
