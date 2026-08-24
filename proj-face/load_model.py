@@ -60,6 +60,16 @@ def load_model(model_name):
         model.load_state_dict(checkpoint['state_dict'])
         model = model.cuda()
         print("loaded SL_resnet18_scratch_28way_IDEM_combined_seed777_model_best")
+    elif model_name == 'SL_resnet18_finetune_28way_IDEM_combined_seed777_model_best':
+        # train_finetune_28way_combined_resnet18.py: ImageNet-pretrained fine-tune
+        # counterpart of SL_resnet18_scratch_28way_IDEM_combined_seed777_model_best above,
+        # same ConcatDataset of plain + colorbg 28way_IDEM
+        model = models.resnet18(pretrained=False)
+        model.fc = nn.Linear(512, 28)
+        checkpoint = torch.load('resnet18_finetune_28way_IDEM_combined_seed777_model_best.pth.tar', map_location='cuda')
+        model.load_state_dict(checkpoint['state_dict'])
+        model = model.cuda()
+        print("loaded SL_resnet18_finetune_28way_IDEM_combined_seed777_model_best")
     elif model_name == 'SL_resnet50_scratch_28way_IDEM_seed777_model_best':
         # train_from_scratch_28way_IDEM.py: plain (no colorbg) counterpart of
         # SL_resnet50_scratch_28way_IDEM_colorbg_seed777_model_best above -- same
