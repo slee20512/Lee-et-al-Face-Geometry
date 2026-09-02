@@ -44,7 +44,9 @@ Omit `--tasks` to run all 17. `python run_pairwise_svm.py --list` prints them.
 - `dashboard.html` — progress bar, one colour-coded table per task (rows =
   models, columns = pairs, last column = task mean ± sd), an errors section, and
   a **pastable-rows** `<pre>` block per task matching the notebook's
-  `print_pairwise_rows` output — copy that straight back into the notebook.
+  `print_pairwise_rows` output.
+- `pastable_rows.txt` — the same pastable rows, all tasks, as plain text; copy
+  straight back into the notebook.
 - `arrays/<task>__<model>__pairNNN.npz` — only with `--save-arrays`: per-image
   `acc_per_img` (2, n) and `dist` (2, num_rep, n) for downstream i1 analyses.
 

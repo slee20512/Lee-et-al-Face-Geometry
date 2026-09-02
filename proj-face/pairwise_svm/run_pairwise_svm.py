@@ -196,6 +196,27 @@ def acc_cell_style(v):
     return f"background:rgb({g},255,{g})" if v >= 0.5 else "background:rgb(255,230,230)"
 
 
+def render_pastable(state):
+    """Plain-text pairwise rows, one block per task -- matches the notebook's
+    print_pairwise_rows output so it can be pasted straight back in."""
+    out = []
+    for task, tdata in state["tasks"].items():
+        np_ = len(tdata["pairs"])
+        res = tdata["results"]
+        out.append(f"=== {task}  (nb #{tdata['notebook_id']}, {np_} pairs) ===")
+        for m in state["meta"]["models"]:
+            cells = []
+            for i in range(np_):
+                c = res.get(m, {}).get(str(i))
+                cells.append(f"{c['mean']:.6f}+-{c['std']:.6f}" if c and "mean" in c else "NA")
+            out.append(m + "\t" + "\t".join(cells))
+        out.append("")
+    out.append(f"# updated {state['meta']['updated']}  "
+               f"({state['meta']['units_done']}/{state['meta']['units_total']} units, "
+               f"{state['meta']['units_error']} errors)")
+    return "\n".join(out) + "\n"
+
+
 def render_dashboard(state, refresh):
     meta = state["meta"]
     total = meta["units_total"]
@@ -329,6 +350,7 @@ def main():
         os.makedirs(os.path.join(args.outdir, "arrays"), exist_ok=True)
     results_path = os.path.join(args.outdir, "results.json")
     dash_path = os.path.join(args.outdir, "dashboard.html")
+    pastable_path = os.path.join(args.outdir, "pastable_rows.txt")
 
     prev = load_state(results_path)
 
@@ -390,6 +412,7 @@ def main():
         state["meta"]["updated"] = now_iso()
         atomic_write(results_path, json.dumps(state, indent=1, default=_json_default))
         atomic_write(dash_path, render_dashboard(state, args.refresh))
+        atomic_write(pastable_path, render_pastable(state))
 
     print(f"{now_iso()}  {len(units)} units to run  ({state['meta']['units_done']}/{total_units} already done)")
     print(f"{now_iso()}  dashboard: {dash_path}")
